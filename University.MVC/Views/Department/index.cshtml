@@ -1,0 +1,31 @@
+﻿@model IEnumerable<University.MVC.Models.Department>
+@{
+    ViewData["title"] = "Index";
+}
+
+<h1>Department table is in the below....</h1>
+
+<table class="department table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model=>model.DepartmentCode)</th>
+            <th>@Html.DisplayNameFor(model=>model.DepartmentName)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem=>item.DepartmentCode)</td>
+                <td>@Html.DisplayFor(modelItem=>item.DepartmentName)</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>To add a new department click on the link in the below...</h2>
+<a asp-action="Create">Add New Department</a>

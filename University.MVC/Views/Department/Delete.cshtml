@@ -1,0 +1,17 @@
+﻿@model University.MVC.Models.Department
+@{
+    ViewData["title"] = "Delete";
+}
+
+<div>
+    <dl>
+        <dt>@Html.DisplayNameFor(model=>model.DepartmentCode)</dt>
+        <dd>@Html.DisplayFor(model=>model.DepartmentCode)</dd>
+        <dt>@Html.DisplayNameFor(model=>model.DepartmentName)</dt>
+        <dd>@Html.DisplayFor(model=>model.DepartmentName)</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" />
+    </form>
+    <a asp-action="Index">Back to Department Table</a>
+</div>

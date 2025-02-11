@@ -1,0 +1,20 @@
+﻿@model University.MVC.Models.Course
+@{
+    ViewData["title"] = "Delete";
+}
+
+<div>
+    <dl>
+        <dt>@Html.DisplayNameFor(model=>model.CourseCode)</dt>
+        <dd>@Html.DisplayFor(model=>model.CourseCode)</dd>
+        <dt>@Html.DisplayNameFor(model => model.CourseName)</dt>
+        <dd>@Html.DisplayFor(model => model.CourseName)</dd>
+        <dt>@Html.DisplayNameFor(model => model.CourseTeacher)</dt>
+        <dd>@Html.DisplayFor(model => model.CourseTeacher)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Department)</dt>
+        <dd>@Html.DisplayFor(model => model.Department)</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="submit" value="Confirm" />
+    </form>
+</div>

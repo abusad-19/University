@@ -1,0 +1,36 @@
+﻿@model IEnumerable<University.MVC.Models.Student>;
+
+@{
+    ViewData["title"] = "index";
+}
+
+<h1>Student table is in the below....</h1>
+
+<table class="student table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model=>model.StudentId)</th>
+            <th>@Html.DisplayNameFor(model=>model.StudentName)</th>
+            <th>@Html.DisplayNameFor(model => model.Department)</th>
+            <th>@Html.DisplayNameFor(model => model.Session)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.StudentId)</td>
+                <td>@Html.DisplayFor(modelItem=>item.StudentName)</td>
+                <td>@Html.DisplayFor(modelItem=>item.Department)</td>
+                <td>@Html.DisplayFor(modelItem=>item.Session)</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>To add a new student click on the link in the below...</h2>
+<a asp-action="Create">Add New Student</a>

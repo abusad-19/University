@@ -1,0 +1,20 @@
+﻿@model University.MVC.Models.Department;
+
+@{
+    ViewData["title"] = "add department";
+}
+
+
+<form asp-action="Create">
+    <div>
+        <label asp-for="DepartmentCode">Department Code</label>
+        <input asp-for="DepartmentCode" />
+    </div>
+    <div>
+        <label asp-for="DepartmentName">Name</label>
+        <input asp-for="DepartmentName" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>

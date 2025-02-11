@@ -1,0 +1,18 @@
+﻿@model University.MVC.Models.Department
+@{
+    ViewData["title"] = "Edit";
+}
+
+<form asp-action="Edit">
+    <div>
+        <label asp-for="DepartmentCode">Department Code</label>
+        <input asp-for="DepartmentCode" />
+    </div>
+    <div>
+        <label asp-for="DepartmentName">Department Name</label>
+        <input asp-for="DepartmentName" />
+    </div>
+    <div>
+        <input type="submit" value="Confirm" />
+    </div>
+</form>

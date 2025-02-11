@@ -1,0 +1,34 @@
+﻿@model IEnumerable<University.MVC.Models.Teacher>;
+
+@{
+    ViewData["title"] = "index";
+}
+
+<h1>Teacher table in the below....</h1>
+
+<table class="teacher table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model=>model.TeacherId)</th>
+            <th>@Html.DisplayNameFor(model=>model.TeacherName)</th>
+            <th>@Html.DisplayNameFor(model=>model.Department)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem=>item.TeacherId)</td>
+                <td>@Html.DisplayFor(modelItem=>item.TeacherName)</td>
+                <td>@Html.DisplayFor(modelItem=>item.Department)</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>To add a new teacher click on the link in the below...</h2>
+<a asp-action="Create">Add New Teacher</a>

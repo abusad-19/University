@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "University.BLL/1.0.0": {
+        "dependencies": {
+          "University.DAL": "1.0.0"
+        },
+        "runtime": {
+          "University.BLL.dll": {}
+        }
+      },
+      "University.DAL/1.0.0": {
+        "runtime": {
+          "University.DAL.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "University.BLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "University.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

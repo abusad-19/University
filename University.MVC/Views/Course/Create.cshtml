@@ -1,0 +1,30 @@
+﻿@model University.MVC.Models.Course
+@{
+    ViewData["title"] = "Create";
+}
+
+<form asp-action="Create">
+    <div>
+        <label asp-for="CourseCode">Course Code</label>
+        <input asp-for="CourseCode" />
+    </div>
+    <div>
+        <label asp-for="CourseName">Course Name</label>
+        <input asp-for="CourseName" />
+    </div>
+    <div>
+        <label asp-for="CourseTeacher">Course Teacher ID</label>
+        <select asp-for="CourseTeacher" asp-items="@ViewBag.Teachers">
+            <option value="">Select Teacher</option>
+        </select>
+    </div>
+    <div>
+        <label asp-for="Department">Department</label>
+        <select asp-for="Department" asp-items="@ViewBag.Departments">
+            <option value="">Select Department</option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Create" />
+    </div>
+</form>

@@ -1,0 +1,11 @@
+D:\.NET\Beginner project repo\repos\University\University.DAL\bin\Debug\net8.0\University.DAL.deps.json
+D:\.NET\Beginner project repo\repos\University\University.DAL\bin\Debug\net8.0\University.DAL.dll
+D:\.NET\Beginner project repo\repos\University\University.DAL\bin\Debug\net8.0\University.DAL.pdb
+D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\University.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\University.DAL.AssemblyInfoInputs.cache
+D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\University.DAL.AssemblyInfo.cs
+D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\University.DAL.csproj.CoreCompileInputs.cache
+D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\University.DAL.dll
+D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\refint\University.DAL.dll
+D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\University.DAL.pdb
+D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\ref\University.DAL.dll
