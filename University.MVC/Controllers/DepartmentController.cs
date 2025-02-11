@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using University.MVC.Models;
+using University.DAL.Models;
 
 namespace University.MVC.Controllers
 {

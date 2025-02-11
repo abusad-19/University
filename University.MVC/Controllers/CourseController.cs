@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using University.MVC.Models;
-using University.BLL;
+using University.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace University.MVC.Controllers
