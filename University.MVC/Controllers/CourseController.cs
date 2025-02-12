@@ -23,7 +23,7 @@ namespace University.MVC.Controllers
             List<SelectListItem> departments= new List<SelectListItem>();
             foreach(var element in _context.DepartmentTable) 
             {
-                departments.Add(new SelectListItem {Text=element.DepartmentName, Value=element.DepartmentName});
+                departments.Add(new SelectListItem {Text=element.DepartmentName, Value=element.DepartmentCode.ToString()});
             }
             return departments;
         }
@@ -34,7 +34,7 @@ namespace University.MVC.Controllers
             List<SelectListItem> teachers = new List<SelectListItem>();
             foreach (var element in _context.TeacherTable)
             {
-                teachers.Add(new SelectListItem { Text = element.TeacherName+" "+element.TeacherId, Value = element.TeacherName });
+                teachers.Add(new SelectListItem { Text = element.TeacherName+" "+element.TeacherId, Value = element.TeacherId.ToString() });
             }
             return teachers;
         }
