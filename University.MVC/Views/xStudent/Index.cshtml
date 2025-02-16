@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["title"] = $"{@ViewBag.studentName}'s Profile";
+}
+<div>
+    <a asp-action="CourseCanBeEnroll" asp-route-id="@ViewBag.stdId" class="btn btn-success">
+        Enroll A New Course
+    </a>
+</div>
+<div>
+    <a asp-action="MyEnrolledCourses" asp-route-id="@ViewBag.stdId" class="btn btn-primary">
+        My Enrolled Courses
+    </a>
+</div>
+<div>
+    <button>Final Result</button>
+</div>

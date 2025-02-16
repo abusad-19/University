@@ -1,0 +1,30 @@
+﻿@model University.DAL.Models.Course;
+
+@{
+    ViewData["title"] = $"Courses Can Be Enroll";
+}
+
+<table class="course table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CourseCode)</th>
+            <th>@Html.DisplayNameFor(model => model.CourseName)</th>
+            <th>@Html.DisplayNameFor(model => model.CourseTeacher)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.courses)
+        {
+            <tr>
+                <td>@item.CourseCode</td>
+                <td>@item.CourseName</td>
+                <td>@item.CourseTeacher</td>
+                <td>
+                    <a href="@Url.Action("EnrollCourse", "xStudent", new { pupilId = ViewBag.student, courseId = @item.CourseCode })">
+                        Enroll Now
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

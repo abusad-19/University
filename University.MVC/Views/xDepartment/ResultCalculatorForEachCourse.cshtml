@@ -1,0 +1,33 @@
+﻿@model University.DAL.Models.StudentResult
+@{
+    ViewData["title"] = "Enrolled Courses";
+}
+
+<table class="my course table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CourseName)</th>
+            <th>@Html.DisplayNameFor(model => model.CourseCredit)</th>
+            <th>@Html.DisplayNameFor(model=>model.Mark)</th>
+            <th>@Html.DisplayNameFor(model=>model.GPA)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.myCourses)
+        {
+            <tr>
+                <td>@item.CourseName</td>
+                <td>@item.CourseCredit</td>
+                <td>@item.Mark</td>
+                <td>@item.GPA</td>
+                <td>
+                    <form asp-action="ResultCalculatorForEachCourse">
+                        <label asp-for="Mark">Input Gain Mark</label>
+                        <input asp-for="Mark" new{courseName=@item.CourseName} />
+                        <input type="submit" value="Save" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

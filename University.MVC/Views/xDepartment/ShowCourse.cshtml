@@ -1,0 +1,36 @@
+﻿@model University.DAL.Models.Course
+@{
+    ViewData["title"] = $"Courses of {@ViewBag.xdepartment}";
+}
+
+<h2>We provide @{@ViewBag.Courses.Count} courses. </h2>
+
+<table class="course table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CourseCode)</th>
+            <th>@Html.DisplayNameFor(model => model.CourseName)</th>
+            <th>@Html.DisplayNameFor(model => model.CourseTeacher)</th>
+            <th>@Html.DisplayNameFor(model => model.Credit)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Courses)
+        {
+            <tr>
+                <td>@item.CourseCode</td>
+                <td>@item.CourseName</td>
+                <td>@item.CourseTeacher</td>
+                <td>@item.Credit</td>
+                <td>
+                    <button>Add</button>
+                </td>
+                <td>
+                    <button>Description</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Course" asp-action="Create" class="btn btn-info">Add Course</a>

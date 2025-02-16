@@ -1,6 +1,6 @@
 ﻿@model University.DAL.Models.Course
 @{
-    ViewData["title"] = "Edit";
+    ViewData["title"] = "Edit Course";
 }
 
 <form asp-action="Edit">
@@ -22,6 +22,21 @@
         <label asp-for="Department">Department</label>
         <select asp-for="Department" asp-items="@ViewBag.Departments">
             <option value="">--select--</option>
+        </select>
+    </div>
+    <div>
+        <label asp-for="Credit">Course Credit</label>
+        <input asp-for="Credit" />
+    </div>
+    <div>
+        <label asp-for="Year">Year</label>
+        <select asp-for="Year">
+            <option value="">--select--</option>
+            <option value="First Year">First Year</option>
+            <option value="Second Year">Second Year</option>
+            <option value="Third Year">Third Year</option>
+            <option value="Fourth Year">Fourth Year</option>
+            <option value="Master's">Master's</option>
         </select>
     </div>
     <div>

@@ -12,5 +12,7 @@ namespace University.DAL.Models
         public DbSet<Teacher> TeacherTable { get; set;}
         public DbSet<Department> DepartmentTable { get; set; }
         public DbSet<Course> CourseTable { get; set;}
+
+        public DbSet<StudentResult> StudentResultTable { get; set;}
     }
 }

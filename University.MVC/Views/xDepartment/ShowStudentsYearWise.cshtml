@@ -1,0 +1,30 @@
+﻿@model University.DAL.Models.Student;
+@{
+    ViewData["title"] = $"{@ViewBag.year}";
+}
+
+<h2>These are student of @ViewBag.year.... </h2>
+
+<table class="year student table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.StudentId)</th>
+            <th>@Html.DisplayNameFor(model => model.StudentName)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.studentYearWise)
+        {
+            <tr>
+                <td>@item.StudentId</td>
+                <td>
+                    <a asp-controller="xDepartment" asp-action="ResultCalculatorForEachCourse" asp-route-id="@item.StudentId" class="btn btn-info">
+                        @item.StudentName
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

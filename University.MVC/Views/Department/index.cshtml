@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<University.DAL.Models.Department>
 @{
-    ViewData["title"] = "Index";
+    ViewData["title"] = "All Department of University";
 }
 
-<h1>Department table is in the below....</h1>
+<h1>There are @Model.Count() department in the below....</h1>
 
 <table class="department table">
     <thead>
@@ -17,10 +17,14 @@
         {
             <tr>
                 <td>@Html.DisplayFor(modelItem=>item.DepartmentCode)</td>
-                <td>@Html.DisplayFor(modelItem=>item.DepartmentName)</td>
                 <td>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-controller="xDepartment" asp-action="Index" asp-route-id="@item.DepartmentCode" class="btn btn-info">
+                        @item.DepartmentName
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Edit</a>
                 </td>
             </tr>
         }
@@ -28,4 +32,4 @@
 </table>
 
 <h2>To add a new department click on the link in the below...</h2>
-<a asp-action="Create">Add New Department</a>
+<a asp-action="Create" class="btn btn-info">Add New Department</a>

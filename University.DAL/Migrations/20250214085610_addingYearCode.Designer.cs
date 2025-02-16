@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using University.DAL.Models;
 
@@ -10,9 +11,11 @@ using University.DAL.Models;
 namespace University.DAL.Migrations
 {
     [DbContext(typeof(appDBcontext))]
-    partial class appDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20250214085610_addingYearCode")]
+    partial class addingYearCode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,8 +47,8 @@ namespace University.DAL.Migrations
                     b.Property<string>("Department")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Year")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("YearCode")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -91,9 +94,8 @@ namespace University.DAL.Migrations
                     b.Property<string>("StudentName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Year")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("YearCode")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -115,18 +117,17 @@ namespace University.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float?>("GPA")
+                    b.Property<float>("GPA")
                         .HasColumnType("real");
 
-                    b.Property<int?>("Mark")
+                    b.Property<int>("Mark")
                         .HasColumnType("int");
 
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Year")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("YearCode")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
