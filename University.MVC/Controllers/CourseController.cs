@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using University.MVC.Models;
-using University.BLL;
+using University.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace University.MVC.Controllers
@@ -35,7 +34,7 @@ namespace University.MVC.Controllers
             List<SelectListItem> teachers = new List<SelectListItem>();
             foreach (var element in _context.TeacherTable)
             {
-                teachers.Add(new SelectListItem { Text = element.TeacherName+" "+element.TeacherId, Value = element.TeacherName });
+                teachers.Add(new SelectListItem { Text = element.TeacherName+" "+element.TeacherId, Value =$"{element.TeacherName}({element.TeacherId})"});
             }
             return teachers;
         }
@@ -48,7 +47,7 @@ namespace University.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("CourseCode,CourseName,CourseTeacher,Department")]Course course)
+        public async Task<IActionResult> Create([Bind("CourseCode,CourseName,CourseTeacher,Department,Credit,Year")]Course course)
         {
             _context.CourseTable.Add(course);
             await _context.SaveChangesAsync();
@@ -85,7 +84,7 @@ namespace University.MVC.Controllers
         }
 
         [HttpPost, ActionName("Edit")]
-        public async Task<IActionResult> Confirm(int Id, [Bind("CourseCode,CourseName,CourseTeacher,Department")]Course newCourse)
+        public async Task<IActionResult> Confirm(int Id, [Bind("CourseCode,CourseName,CourseTeacher,Department,Credit,Year")]Course newCourse)
         {
             var oldCourse = await _context.CourseTable.FindAsync(Id);
             if (oldCourse == null)
@@ -94,6 +93,8 @@ namespace University.MVC.Controllers
             oldCourse.CourseName = newCourse.CourseName;
             oldCourse.CourseTeacher = newCourse.CourseTeacher;
             oldCourse.Department = newCourse.Department;
+            oldCourse.Credit = newCourse.Credit;
+            oldCourse.Year = newCourse.Year;
             _context.CourseTable.Update(oldCourse);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

@@ -1,6 +1,6 @@
-﻿@model University.MVC.Models.Course
+﻿@model University.DAL.Models.Course
 @{
-    ViewData["title"] = "Delete";
+    ViewData["title"] = "Delete Course";
 }
 
 <div>
@@ -13,6 +13,8 @@
         <dd>@Html.DisplayFor(model => model.CourseTeacher)</dd>
         <dt>@Html.DisplayNameFor(model => model.Department)</dt>
         <dd>@Html.DisplayFor(model => model.Department)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Credit)</dt>
+        <dd>@Html.DisplayFor(model => model.Credit)</dd>
     </dl>
     <form asp-action="Delete">
         <input type="submit" value="Confirm" />

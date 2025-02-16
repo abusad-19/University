@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["title"] = $"{ViewBag.department}";
+}
+<div>
+    <a asp-action="ShowTeacher" asp-route-id="@ViewBag.Id" class="btn btn-info">Teachers</a>
+</div>
+<div>
+    <a asp-action="ShowCourse" asp-route-id="@ViewBag.Id" class="btn btn-success">Courses</a>
+</div>
+<div>
+    <a asp-action="ShowStudent" asp-route-id="@ViewBag.Id" class="btn btn-info">Students</a>
+</div>

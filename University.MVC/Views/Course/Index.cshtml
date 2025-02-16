@@ -1,10 +1,10 @@
-﻿@model IEnumerable<University.MVC.Models.Course> 
+﻿@model IEnumerable<University.DAL.Models.Course> 
 
 @{
-    ViewData["title"] = "Index";
+    ViewData["title"] = "All Courses of University";
 }
 
-<h1>Course table is in the below...</h1>
+<h1>There are @Model.Count() Course in the below...</h1>
 
 <table class="course table">
     <thead>
@@ -13,6 +13,8 @@
             <th>@Html.DisplayNameFor(model => model.CourseName)</th>
             <th>@Html.DisplayNameFor(model => model.CourseTeacher)</th>
             <th>@Html.DisplayNameFor(model => model.Department)</th>
+            <th>@Html.DisplayNameFor(model => model.Credit)</th>
+            <th>@Html.DisplayNameFor(model=>model.Year)</th>
         </tr>
     </thead>
     <tbody>
@@ -23,15 +25,17 @@
                 <td>@Html.DisplayFor(modelItem => item.CourseName)</td>
                 <td>@Html.DisplayFor(modelItem => item.CourseTeacher)</td>
                 <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                <td>@Html.DisplayFor(modelItem => item.Credit)</td>
+                <td>@Html.DisplayFor(modelItem=>item.Year)</td>
                 <td>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info">Delete</a>
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Edit</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<a asp-action="Create">add a new course</a>
+<a asp-action="Create" class="btn btn-info">add a new course</a>

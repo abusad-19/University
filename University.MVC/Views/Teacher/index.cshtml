@@ -1,10 +1,10 @@
-﻿@model IEnumerable<University.MVC.Models.Teacher>;
+﻿@model IEnumerable<University.DAL.Models.Teacher>;
 
 @{
-    ViewData["title"] = "index";
+    ViewData["title"] = "All Teacher of University";
 }
 
-<h1>Teacher table in the below....</h1>
+<h1>There are @Model.Count() Teacher the below....</h1>
 
 <table class="teacher table">
     <thead>
@@ -22,8 +22,8 @@
                 <td>@Html.DisplayFor(modelItem=>item.TeacherName)</td>
                 <td>@Html.DisplayFor(modelItem=>item.Department)</td>
                 <td>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Edit</a>
                 </td>
             </tr>
         }
@@ -31,4 +31,4 @@
 </table>
 
 <h2>To add a new teacher click on the link in the below...</h2>
-<a asp-action="Create">Add New Teacher</a>
+<a asp-action="Create" class="btn btn-info">Add New Teacher</a>

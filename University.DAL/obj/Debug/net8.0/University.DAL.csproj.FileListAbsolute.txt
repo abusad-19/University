@@ -9,3 +9,6 @@ D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\U
 D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\refint\University.DAL.dll
 D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\University.DAL.pdb
 D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\ref\University.DAL.dll
+D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\University.DAL.csproj.AssemblyReference.cache
+D:\.NET\Beginner project repo\repos\University\University.DAL\bin\Debug\net8.0\University.DAL.runtimeconfig.json
+D:\.NET\Beginner project repo\repos\University\University.DAL\obj\Debug\net8.0\University.DAL.genruntimeconfig.cache

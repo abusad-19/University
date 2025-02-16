@@ -3,20 +3,92 @@
   "WorkspaceRootPath": "D:\\.NET\\Beginner project repo\\repos\\University\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6FFBBA3B-6046-4263-86A2-C649E89CBBC2}|University.DAL\\University.DAL.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.dal\\pupil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FFBBA3B-6046-4263-86A2-C649E89CBBC2}|University.DAL\\University.DAL.csproj|solutionrelative:university.dal\\pupil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FFBBA3B-6046-4263-86A2-C649E89CBBC2}|University.DAL\\University.DAL.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.dal\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FFBBA3B-6046-4263-86A2-C649E89CBBC2}|University.DAL\\University.DAL.csproj|solutionrelative:university.dal\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\teacher\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\teacher\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\teacher\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\teacher\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\teacher\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\teacher\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\teacher\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\teacher\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\student\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\student\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\student\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\student\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\student\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\student\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\department\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\department\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\department\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\department\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\department\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\department\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\department\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\department\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\course\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\course\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\course\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\course\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\course\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\course\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\views\\course\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\views\\course\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FFBBA3B-6046-4263-86A2-C649E89CBBC2}|University.DAL\\University.DAL.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.dal\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FFBBA3B-6046-4263-86A2-C649E89CBBC2}|University.DAL\\University.DAL.csproj|solutionrelative:university.dal\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|d:\\.net\\beginner project repo\\repos\\university\\university.mvc\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC3164B3-22B2-407D-8C0C-4DAAFFA53FD5}|University.MVC\\University.MVC.csproj|solutionrelative:university.mvc\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,53 +107,287 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "pupil.cs",
-              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.DAL\\pupil.cs",
-              "RelativeDocumentMoniker": "University.DAL\\pupil.cs",
-              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.DAL\\pupil.cs",
-              "RelativeToolTip": "University.DAL\\pupil.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T03:23:59.7Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Course.cs",
-              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Models\\Course.cs",
-              "RelativeDocumentMoniker": "University.MVC\\Models\\Course.cs",
-              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Models\\Course.cs",
-              "RelativeToolTip": "University.MVC\\Models\\Course.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAxwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T03:24:59.959Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Course\\Create.cshtml",
-              "RelativeDocumentMoniker": "University.MVC\\Views\\Course\\Create.cshtml",
-              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Course\\Create.cshtml",
-              "RelativeToolTip": "University.MVC\\Views\\Course\\Create.cshtml",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAABgAAAARAAAA",
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\_ViewImports.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\_ViewImports.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-11T03:21:02.218Z",
+              "WhenOpened": "2025-02-11T11:41:48.28Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CourseController.cs",
-              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Controllers\\CourseController.cs",
-              "RelativeDocumentMoniker": "University.MVC\\Controllers\\CourseController.cs",
-              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Controllers\\CourseController.cs",
-              "RelativeToolTip": "University.MVC\\Controllers\\CourseController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAABRAAAA",
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:40:12.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.DAL\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "University.DAL\\Models\\ErrorViewModel.cs",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.DAL\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "University.DAL\\Models\\ErrorViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-09T07:24:46.426Z",
+              "WhenOpened": "2025-02-11T11:38:56.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "University.MVC\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "University.MVC\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwAIAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T11:33:54.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Teacher\\index.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Teacher\\index.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Teacher\\index.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Teacher\\index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:32:01.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Teacher\\Edit.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Teacher\\Edit.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Teacher\\Edit.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Teacher\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:31:51.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Teacher\\Delete.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Teacher\\Delete.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Teacher\\Delete.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Teacher\\Delete.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:31:40.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Teacher\\Create.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Teacher\\Create.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Teacher\\Create.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Teacher\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:31:30.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Student\\index.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Student\\index.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Student\\index.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Student\\index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:31:12.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Student\\Edit.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Student\\Edit.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Student\\Edit.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Student\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:31:04.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Student\\Delete.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Student\\Delete.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Student\\Delete.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Student\\Delete.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:30:54.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Student\\Create.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Student\\Create.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Student\\Create.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Student\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:30:45.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Department\\index.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Department\\index.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Department\\index.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Department\\index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:30:31.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Department\\Edit.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Department\\Edit.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Department\\Edit.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Department\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:30:23.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Department\\Delete.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Department\\Delete.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Department\\Delete.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Department\\Delete.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:30:14.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Department\\Create.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Department\\Create.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Department\\Create.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Department\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:30:04.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Course\\Index.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Course\\Index.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Course\\Index.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Course\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:29:47.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Course\\Edit.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Course\\Edit.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Course\\Edit.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Course\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:29:37.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Course\\Delete.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Course\\Delete.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Course\\Delete.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Course\\Delete.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T11:29:25.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "appDBcontext.cs",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.DAL\\Models\\appDBcontext.cs",
+              "RelativeDocumentMoniker": "University.DAL\\Models\\appDBcontext.cs",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.DAL\\Models\\appDBcontext.cs",
+              "RelativeToolTip": "University.DAL\\Models\\appDBcontext.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T11:09:54.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "TeacherController.cs",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Controllers\\TeacherController.cs",
+              "RelativeDocumentMoniker": "University.MVC\\Controllers\\TeacherController.cs",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Controllers\\TeacherController.cs",
+              "RelativeToolTip": "University.MVC\\Controllers\\TeacherController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T11:05:08.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Course\\Create.cshtml",
+              "RelativeDocumentMoniker": "University.MVC\\Views\\Course\\Create.cshtml",
+              "ToolTip": "D:\\.NET\\Beginner project repo\\repos\\University\\University.MVC\\Views\\Course\\Create.cshtml",
+              "RelativeToolTip": "University.MVC\\Views\\Course\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-11T03:21:02.218Z",
               "EditorCaption": ""
             }
           ]
