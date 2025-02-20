@@ -7,7 +7,8 @@
         public string? CourseName { get; set; }
         public string? CourseTeacher { get; set; }
         public int Credit { get; set; }
+        public bool IsLab {  get; set; }
         public string? Department { get; set; }
-        public String? Year { get; set; }
+        public String Year { get; set; }
     }
 }

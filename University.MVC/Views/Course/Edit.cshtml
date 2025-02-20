@@ -40,6 +40,14 @@
         </select>
     </div>
     <div>
+        <label asp-for="IsLab">Lab</label>
+        <select asp-for="IsLab">
+            <option value="">--select--</option>
+            <option value=true>True</option>
+            <option value=false>False</option>
+        </select>
+    </div>
+    <div>
         <input type="submit" value="Update" />
     </div>
 </form>

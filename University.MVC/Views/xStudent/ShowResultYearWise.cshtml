@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["title"] = $"{@ViewBag.student}'s Result";
+}
+
+
+
+@if (ViewBag.year=="First Year")
+{
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="First Year" })" class="btn btn-info">
+            First Year Result
+        </a>
+    </div>
+}
+else if (ViewBag.year == "Second Year")
+{
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="First Year" })" class="btn btn-info">
+            First Year Result
+        </a>
+    </div>
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="Second Year" })" class="btn btn-success">
+            Second Year Result
+        </a>
+    </div>
+}
+else if (ViewBag.year == "Third Year")
+{
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="First Year" })" class="btn btn-info">
+            First Year Result
+        </a>
+    </div>
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="Second Year" })" class="btn btn-success">
+            Second Year Result
+        </a>
+    </div>
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="Third Year" })" class="btn btn-info">
+            Third Year Result
+        </a>
+    </div>
+    
+}
+else if (ViewBag.year == "Fourth Year")
+{
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="First Year" })" class="btn btn-info">
+            First Year Result
+        </a>
+    </div>
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="Second Year" })" class="btn btn-success">
+            Second Year Result
+        </a>
+    </div>
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="Third Year" })" class="btn btn-info">
+            Third Year Result
+        </a>
+    </div>
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="Fourth Year" })" class="btn btn-success">
+            Fourth Year Result
+        </a>
+    </div>   
+}
+else
+{
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="First Year" })" class="btn btn-info">
+            First Year Result
+        </a>
+    </div>
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="Second Year" })" class="btn btn-success">
+            Second Year Result
+        </a>
+    </div>
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="Third Year" })" class="btn btn-info">
+            Third Year Result
+        </a>
+    </div>
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="Fourth Year" })" class="btn btn-success">
+            Fourth Year Result
+        </a>
+    </div>
+    <div>
+        <a href="@Url.Action("YearFinalResult", "xStudent", new{id=@ViewBag.studentId , YearName="Master's" })" class="btn btn-info">
+            Master's Year Result
+        </a>
+    </div>
+}
+
+

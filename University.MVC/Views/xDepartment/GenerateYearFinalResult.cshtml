@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["title"] = "Result";
+}
+
+<table class="result table">
+    <thead>
+        <tr>
+            <th>CourseName</th>
+            <th>Credit</th>
+            <th>Mark</th>
+            <th>GPA Point</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.courses)
+        {
+            <tr>
+                <td>@item.CourseName</td>
+                <td>@item.CourseCredit</td>
+                <td>@item.Mark</td>
+                <td>@item.GPA</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Year Final Result is @ViewBag.yearFinal</h2>
+<a class="btn btn-info" href="@Url.Action("ResultCalculatorForEachCourse","xDepartment",new{id=@ViewBag.studentId, year=@ViewBag.year, isWrong=false})">
+    Update
+</a>
