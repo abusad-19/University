@@ -1,6 +1,15 @@
 ﻿@model University.DAL.Models.StudentResult
 @{
-    ViewData["title"] = "Enrolled Courses";
+    ViewData["title"] = $"{ViewBag.studentName}'s Courses";
+}
+
+@if (ViewBag.isWrong is true)
+{
+    <h2>You have entered some wrong mark. Please enter all the mark carefully again.</h2>
+}
+else 
+{
+    
 }
 
 <table class="my course table">
@@ -23,7 +32,9 @@
                 <td>
                     <form asp-action="ResultCalculatorForEachCourse">
                         <label asp-for="Mark">Input Gain Mark</label>
-                        <input asp-for="Mark" new{courseName=@item.CourseName} />
+                        <input asp-for="Mark" />
+                        <input type="hidden" asp-for="CourseCode" value="@item.CourseCode"/>
+                        <input type="hidden" asp-for="StudentId" value="@item.StudentId" />
                         <input type="submit" value="Save" />
                     </form>
                 </td>
@@ -31,3 +42,20 @@
         }
     </tbody>
 </table>
+
+@if (ViewBag.allEnrolled is true && ViewBag.isMarkNull is not true)
+{
+    if (ViewBag.needUpdate is true)
+    {
+        <h2>Year final GPA point is @ViewBag.recentYearFinalResult</h2>
+        <a class="btn btn-info" href="@Url.Action("UpdateYearResult","xDepartment",new{id=@ViewBag.studentId, year=@ViewBag.year})">
+            Update
+        </a>
+    }
+    else
+    {
+        <a asp-action="GenerateYearFinalResult" asp-route-id=@ViewBag.studentId class="btn btn-info">
+            Generate YearFinal Result
+        </a>
+    }
+}

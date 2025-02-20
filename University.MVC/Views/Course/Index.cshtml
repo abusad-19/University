@@ -15,6 +15,7 @@
             <th>@Html.DisplayNameFor(model => model.Department)</th>
             <th>@Html.DisplayNameFor(model => model.Credit)</th>
             <th>@Html.DisplayNameFor(model=>model.Year)</th>
+            <th>IsLab</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Department)</td>
                 <td>@Html.DisplayFor(modelItem => item.Credit)</td>
                 <td>@Html.DisplayFor(modelItem=>item.Year)</td>
+                <td>@item.IsLab</td>
                 <td>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info">Delete</a>
                 </td>

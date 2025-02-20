@@ -47,7 +47,7 @@ namespace University.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("CourseCode,CourseName,CourseTeacher,Department,Credit,Year")]Course course)
+        public async Task<IActionResult> Create([Bind("CourseCode,CourseName,CourseTeacher,Department,Credit,Year,IsLab")]Course course)
         {
             _context.CourseTable.Add(course);
             await _context.SaveChangesAsync();

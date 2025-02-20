@@ -8,6 +8,8 @@
         <tr>
             <th>@Html.DisplayNameFor(model=>model.CourseName)</th>
             <th>@Html.DisplayNameFor(model=>model.CourseCredit)</th>
+            <th>@Html.DisplayNameFor(model=>model.Mark)</th>
+            <th>@Html.DisplayNameFor(model => model.GPA)</th>
         </tr>
     </thead>
     <tbody>
@@ -16,6 +18,8 @@
             <tr>
                 <td>@item.CourseName</td>
                 <td>@item.CourseCredit</td>
+                <td>@item.Mark</td>
+                <td>@item.GPA</td>
             </tr>
         }
     </tbody>
