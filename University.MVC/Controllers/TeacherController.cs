@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using University.BLL.Services;
 using University.DAL.Models;
 
 
@@ -8,23 +8,24 @@ namespace University.MVC.Controllers
 {
     public class TeacherController : Controller
     {
-        public readonly appDBcontext _context;
-        public TeacherController(appDBcontext context) 
+        private readonly TeacherBLL _teacherBLL;
+        public TeacherController(TeacherBLL bll) 
         { 
-            _context = context;
+            _teacherBLL = bll;
         }
         public IActionResult Index()
         {
-            return View(_context.TeacherTable.ToList());
+            return View(_teacherBLL.GetTeacherList());
         }
 
         //making dropdown list of department
         public List<SelectListItem> makeDropdownListOfDepartment()
         {
             List<SelectListItem> departments= new List<SelectListItem>();
-            foreach(var element in _context.DepartmentTable)
+            var depts=_teacherBLL.GetTeacherDropdownList();
+            foreach(var element in depts)
             { 
-                departments.Add(new SelectListItem { Text=element.DepartmentName, Value=element.DepartmentName });
+                departments.Add(new SelectListItem { Text=element.Text, Value=element.Value });
             }
             return departments;
         }
@@ -38,37 +39,34 @@ namespace University.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("TeacherId,TeacherName,Department")]Teacher teacher)
         {
-            _context.TeacherTable.Add(teacher);
-            await _context.SaveChangesAsync();
+            await _teacherBLL.AddAsync(teacher);
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if(id == null)
+            if(id is 0)
                 return NotFound();
-            var teacher=await _context.TeacherTable.FirstOrDefaultAsync(x => x.Id == id);
+            var teacher=await _teacherBLL.FindAsync(id);
             if (teacher == null)
                 return NotFound();
             return View(teacher);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Delete(int id)
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> ConfirmDelete(int id)
         {
-            var teacher = await _context.TeacherTable.FindAsync(id);
-            if (teacher == null)
+            if (id is 0)
                 return NotFound();
-            _context.TeacherTable.Remove(teacher);
-            await _context.SaveChangesAsync();
+            await _teacherBLL.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            if(id==null)
+            if(id is 0)
                 return NotFound();
-            var tutor=await _context.TeacherTable.FirstOrDefaultAsync(x=>x.Id == id);
+            var tutor = await _teacherBLL.FindAsync(id);
             if (tutor == null)
                 return NotFound();
             ViewBag.Departments = makeDropdownListOfDepartment();
@@ -78,16 +76,9 @@ namespace University.MVC.Controllers
         [HttpPost,ActionName("Edit")]
         public async Task<IActionResult> Update(int id, [Bind("TeacherId,TeacherName,Department")]Teacher newTutor)
         {
-            var oldTutor = await _context.TeacherTable.FindAsync(id);
-            if (oldTutor == null)
+            if(id is 0)
                 return NotFound();
-
-            oldTutor.TeacherId=newTutor.TeacherId;
-            oldTutor.TeacherName = newTutor.TeacherName;
-            oldTutor.Department = newTutor.Department;
-
-            _context.TeacherTable.Update(oldTutor);
-            await _context.SaveChangesAsync();
+            await _teacherBLL.UpdateAsync(id, newTutor);
             return RedirectToAction(nameof(Index));
         }
     }

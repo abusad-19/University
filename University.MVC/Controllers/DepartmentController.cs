@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using University.BLL.Services;
 using University.DAL.Models;
 
 namespace University.MVC.Controllers
 {
     public class DepartmentController : Controller
     {
-        public readonly appDBcontext _context;
-        public DepartmentController(appDBcontext context)
+        private readonly DepartmentBLL _departmentBLL;
+        public DepartmentController(DepartmentBLL bll)
         {
-            _context = context;
+            _departmentBLL = bll;
         }
         public IActionResult Index()
         {
-            return View(_context.DepartmentTable.ToList());
+            return View(_departmentBLL.GetDepartmentList());
         }
 
         public IActionResult Create()
@@ -24,37 +24,32 @@ namespace University.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("DepartmentCode,DepartmentName")]Department department)
         {
-            _context.DepartmentTable.Add(department);
-            await _context.SaveChangesAsync();
+            await _departmentBLL.AddAsync(department);
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
             if(id == 0)
                 return NotFound();
-            var department=await _context.DepartmentTable.FirstOrDefaultAsync(x => x.Id == id); 
+            var department = await _departmentBLL.FindAsync(id);
             if(department == null)
                 return NotFound();
             return View(department);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Delete(int id)
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> ConfirmDelete(int id)
         {
-            var department=await _context.DepartmentTable.FindAsync(id);
-            if(department==null)
-                return NotFound();
-            _context.DepartmentTable.Remove(department);
-            await _context.SaveChangesAsync();
+            await _departmentBLL.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
             if(id == 0)
                 return NotFound();
-            var department = await _context.DepartmentTable.FirstOrDefaultAsync(x => x.Id == id);
+            var department = await _departmentBLL.FindAsync(id);
             if(department == null)
                 return NotFound();
             return View(department);
@@ -63,13 +58,7 @@ namespace University.MVC.Controllers
         [HttpPost,ActionName("Edit")]
         public async Task<IActionResult> Update(int id, [Bind("DepartmentCode,DepartmentName")]Department department)
         {
-            var oldDepartment = await _context.DepartmentTable.FindAsync(id);
-            if(oldDepartment == null)
-                return NotFound();
-            oldDepartment.DepartmentCode = department.DepartmentCode;
-            oldDepartment.DepartmentName = department.DepartmentName;
-            _context.DepartmentTable.Update(oldDepartment);
-            await _context.SaveChangesAsync();
+            await _departmentBLL.UpdateAsync(id, department);
             return RedirectToAction(nameof(Index));
         }
     }

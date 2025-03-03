@@ -7,7 +7,7 @@ namespace University.DAL.Models
         public int Id { get; set; }
         public int StudentId { get; set; }
         public string CourseName { get; set; }
-        public int CourseCode {  get; set; }
+        public int? CourseCode {  get; set; }
         public int CourseCredit { get; set; }
         public bool IsLab { get; set; }
         public int? Mark { get; set; }

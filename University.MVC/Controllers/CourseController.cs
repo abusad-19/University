@@ -1,62 +1,51 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using University.DAL.Models;
-using Microsoft.EntityFrameworkCore;
+using University.BLL.Services;
 
 namespace University.MVC.Controllers
 {
     public class CourseController : Controller
     {
-        private readonly appDBcontext _context;
-        public CourseController(appDBcontext context)
+        private readonly CourseBLL _courseBLL;
+        public CourseController(CourseBLL courseBLL)
         {
-            _context = context;
+            _courseBLL = courseBLL;
         }
         public IActionResult Index()
         {
-            return View(_context.CourseTable.ToList());
+            return View(_courseBLL.GetCourseList());
         }
 
-        //making dropdown list for department
-        public List<SelectListItem> makeDropdownListOfDepartment()
+        //making dropdown list of department and teacher
+        public List<SelectListItem> makeDropdownList(string contentname)
         {
-            List<SelectListItem> departments= new List<SelectListItem>();
-            foreach(var element in _context.DepartmentTable) 
+            List<SelectListItem> dropdownList= new List<SelectListItem>();
+            var contentList= _courseBLL.GetDropdownList(contentname);
+            foreach(var element in contentList) 
             {
-                departments.Add(new SelectListItem {Text=element.DepartmentName, Value=element.DepartmentName});
+                dropdownList.Add(new SelectListItem {Text=element.Text, Value=element.Value});
             }
-            return departments;
-        }
-
-        //making dropdown list for teacher
-        public List<SelectListItem> makeDropdownListOfTeacher()
-        {
-            List<SelectListItem> teachers = new List<SelectListItem>();
-            foreach (var element in _context.TeacherTable)
-            {
-                teachers.Add(new SelectListItem { Text = element.TeacherName+" "+element.TeacherId, Value =$"{element.TeacherName}({element.TeacherId})"});
-            }
-            return teachers;
+            return dropdownList;
         }
 
         public IActionResult Create()
         {        
-            ViewBag.Departments=makeDropdownListOfDepartment();
-            ViewBag.Teachers=makeDropdownListOfTeacher();
+            ViewBag.Departments=makeDropdownList("department");
+            ViewBag.Teachers=makeDropdownList("teacher");
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([Bind("CourseCode,CourseName,CourseTeacher,Department,Credit,Year,IsLab")]Course course)
         {
-            _context.CourseTable.Add(course);
-            await _context.SaveChangesAsync();
+            await _courseBLL.AddCourseAsync(course);
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Delete(int Id)
         {
-            var target=await _context.CourseTable.FirstOrDefaultAsync(x => x.Id == Id);
+            var target = await _courseBLL.FindAsync(Id);
             if (target == null)
                 return NotFound();
             return View(target);
@@ -65,38 +54,24 @@ namespace University.MVC.Controllers
         [HttpPost,ActionName("Delete")]
         public async Task<IActionResult> ConfirmDelete(int Id)
         {
-            var target = await _context.CourseTable.FindAsync(Id);
-            if(target == null)
-                return NotFound();
-            _context.CourseTable.Remove(target);
-            await _context.SaveChangesAsync();
+            await _courseBLL.DeleteAsync(Id);
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Edit(int Id)
         {
-            var target= await _context.CourseTable.FirstOrDefaultAsync(x=>x.Id == Id);
+            var target = await _courseBLL.FindAsync(Id);
             if(target==null)
                 return NotFound();
-            ViewBag.Departments = makeDropdownListOfDepartment();
-            ViewBag.Teachers = makeDropdownListOfTeacher();
+            ViewBag.Departments = makeDropdownList("department");
+            ViewBag.Teachers = makeDropdownList("teacher");
             return View(target);
         }
 
         [HttpPost, ActionName("Edit")]
-        public async Task<IActionResult> Confirm(int Id, [Bind("CourseCode,CourseName,CourseTeacher,Department,Credit,Year")]Course newCourse)
+        public async Task<IActionResult> Update(int Id, [Bind("CourseCode,CourseName,CourseTeacher,Department,Credit,Year")]Course newCourse)
         {
-            var oldCourse = await _context.CourseTable.FindAsync(Id);
-            if (oldCourse == null)
-                return NotFound();
-            oldCourse.CourseCode = newCourse.CourseCode;
-            oldCourse.CourseName = newCourse.CourseName;
-            oldCourse.CourseTeacher = newCourse.CourseTeacher;
-            oldCourse.Department = newCourse.Department;
-            oldCourse.Credit = newCourse.Credit;
-            oldCourse.Year = newCourse.Year;
-            _context.CourseTable.Update(oldCourse);
-            await _context.SaveChangesAsync();
+            await _courseBLL.UpdateAsync(Id, newCourse);
             return RedirectToAction(nameof(Index));
         }
     }
