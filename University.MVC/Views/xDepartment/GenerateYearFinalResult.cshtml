@@ -25,6 +25,6 @@
 </table>
 
 <h2>Year Final Result is @ViewBag.yearFinal</h2>
-<a class="btn btn-info" href="@Url.Action("ResultCalculatorForEachCourse","xDepartment",new{id=@ViewBag.studentId, year=@ViewBag.year, isWrong=false})">
+<a class="btn btn-info" href="@Url.Action("ResultCalculatorForEachCourse","xDepartment",new{studentId=@ViewBag.studentId, year=@ViewBag.year, isWrong=false})">
     Update
 </a>

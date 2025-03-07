@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using University.BLL.Services;
 using University.DAL.Models;
 
 namespace University.MVC.Controllers
@@ -7,10 +8,11 @@ namespace University.MVC.Controllers
     public class xStudentController : Controller
     {
         private readonly appDBcontext _context;
-
-        public xStudentController(appDBcontext context)
+        private readonly xStudentBLL _xStudentBll;
+        public xStudentController(appDBcontext context, xStudentBLL bll)
         {
             _context = context;
+            _xStudentBll = bll;
         }
 
         public IActionResult Index(int id)
@@ -109,6 +111,14 @@ namespace University.MVC.Controllers
                 ($"Select * from StudentResultTable where StudentId={id} and Year={YearName}").ToList();
                 
             return View(courses);
+        }
+
+        public IActionResult LibraryIssuedBooks(int id)//here id is studentId
+        {
+            if(id<=0)
+                return NotFound();
+            var books=_xStudentBll.GetIssuedBooks(id);
+            return View(books);
         }
     }
 }

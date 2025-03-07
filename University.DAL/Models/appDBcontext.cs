@@ -15,5 +15,8 @@ namespace University.DAL.Models
 
         public DbSet<StudentResult> StudentResultTable { get; set;}
         public DbSet<StudentResultForYear> StudentResultForYearTable { get;set; }
+        public DbSet<Book> BookTable { get; set; }
+        public DbSet<Cart> CartTable { get; set; }
+        public DbSet<LendBook> LendBookTable { get; set;}
     }
 }

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<University.DAL.Models.LendBook>
+@{
+    ViewData["title"] = "LibraryReport";
+}
+
+@if(Model.Count() is 0)
+{
+    <h2>You have not issued any book yet.</h2>
+}
+else
+{
+    <h2>Your book Issued list...</h2>
+    <table class="book table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.StudentId)</th>
+                <th>@Html.DisplayNameFor(model => model.StudentName)</th>
+                <th>@Html.DisplayNameFor(model => model.BookId)</th>
+                <th>@Html.DisplayNameFor(model => model.BookName)</th>
+                <th>@Html.DisplayNameFor(model => model.Writer)</th>
+                <th>@Html.DisplayNameFor(model => model.IssueDate)</th>
+                <th>@Html.DisplayNameFor(model => model.ReturnDate)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.StudentId</td>
+                    <td>@item.StudentName</td>
+                    <td>@item.BookId</td>
+                    <td>@item.BookName</td>
+                    <td>@item.Writer</td>
+                    <td>@item.IssueDate</td>
+                    <td>@item.ReturnDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

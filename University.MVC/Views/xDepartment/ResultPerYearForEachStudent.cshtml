@@ -3,11 +3,10 @@
 }
 
 
-
 @if (ViewBag.year == "First Year")
 {
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="First Year", isWrong=false})" class="btn btn-info">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="First Year", isWrong=false})" class="btn btn-info">
             First Year Result
         </a>
     </div>
@@ -15,12 +14,12 @@
 else if (ViewBag.year == "Second Year")
 {
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="First Year", isWrong=false })" class="btn btn-info">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="First Year", isWrong=false })" class="btn btn-info">
             First Year Result
         </a>
     </div>
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="Second Year", isWrong=false })" class="btn btn-success">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="Second Year", isWrong=false })" class="btn btn-success">
             Second Year Result
         </a>
     </div>
@@ -28,17 +27,17 @@ else if (ViewBag.year == "Second Year")
 else if (ViewBag.year == "Third Year")
 {
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="First Year", isWrong=false })" class="btn btn-info">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="First Year", isWrong=false })" class="btn btn-info">
             First Year Result
         </a>
     </div>
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="Second Year", isWrong=false })" class="btn btn-success">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="Second Year", isWrong=false })" class="btn btn-success">
             Second Year Result
         </a>
     </div>
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="Third Year", isWrong=false })" class="btn btn-info">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="Third Year", isWrong=false })" class="btn btn-info">
             Third Year Result
         </a>
     </div>
@@ -47,22 +46,22 @@ else if (ViewBag.year == "Third Year")
 else if (ViewBag.year == "Fourth Year")
 {
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="First Year", isWrong=false })" class="btn btn-info">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="First Year", isWrong=false })" class="btn btn-info">
             First Year Result
         </a>
     </div>
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="Second Year", isWrong=false })" class="btn btn-success">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="Second Year", isWrong=false })" class="btn btn-success">
             Second Year Result
         </a>
     </div>
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="Third Year", isWrong=false })" class="btn btn-info">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="Third Year", isWrong=false })" class="btn btn-info">
             Third Year Result
         </a>
     </div>
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="Fourth Year", isWrong=false })" class="btn btn-success">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="Fourth Year", isWrong=false })" class="btn btn-success">
             Fourth Year Result
         </a>
     </div>
@@ -70,27 +69,27 @@ else if (ViewBag.year == "Fourth Year")
 else
 {
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="First Year", isWrong=false })" class="btn btn-info">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="First Year", isWrong=false })" class="btn btn-info">
             First Year Result
         </a>
     </div>
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="Second Year", isWrong=false })" class="btn btn-success">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="Second Year", isWrong=false })" class="btn btn-success">
             Second Year Result
         </a>
     </div>
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="Third Year", isWrong=false })" class="btn btn-info">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="Third Year", isWrong=false })" class="btn btn-info">
             Third Year Result
         </a>
     </div>
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="Fourth Year", isWrong=false })" class="btn btn-success">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="Fourth Year", isWrong=false })" class="btn btn-success">
             Fourth Year Result
         </a>
     </div>
     <div>
-        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{id=@ViewBag.studentId , year="Master's", isWrong=false })" class="btn btn-info">
+        <a href="@Url.Action("ResultCalculatorForEachCourse", "xDepartment", new{studentId=@ViewBag.studentId , year="Master's", isWrong=false })" class="btn btn-info">
             Master's Year Result
         </a>
     </div>

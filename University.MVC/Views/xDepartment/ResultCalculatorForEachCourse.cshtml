@@ -7,10 +7,7 @@
 {
     <h2>You have entered some wrong mark. Please enter all the mark carefully again.</h2>
 }
-else 
-{
-    
-}
+
 
 <table class="my course table">
     <thead>
@@ -33,8 +30,9 @@ else
                     <form asp-action="ResultCalculatorForEachCourse">
                         <label asp-for="Mark">Input Gain Mark</label>
                         <input asp-for="Mark" />
-                        <input type="hidden" asp-for="CourseCode" value="@item.CourseCode"/>
-                        <input type="hidden" asp-for="StudentId" value="@item.StudentId" />
+                        <input type="hidden" asp-for="CourseCode" value=@item.CourseCode />
+                        <input type="hidden" asp-for="StudentId" value=@item.StudentId />
+                        <input type="hidden" asp-for="Year" value="@item.Year" /> 
                         <input type="submit" value="Save" />
                     </form>
                 </td>
@@ -54,7 +52,7 @@ else
     }
     else
     {
-        <a asp-action="GenerateYearFinalResult" asp-route-id=@ViewBag.studentId class="btn btn-info">
+        <a href="@Url.Action("GenerateYearFinalResult","xDepartment",new{studentId=@ViewBag.studentId})" , class="btn btn-info">
             Generate YearFinal Result
         </a>
     }

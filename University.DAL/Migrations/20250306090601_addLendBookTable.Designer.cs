@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using University.DAL.Models;
 
@@ -11,9 +12,11 @@ using University.DAL.Models;
 namespace University.DAL.Migrations
 {
     [DbContext(typeof(appDBcontext))]
-    partial class appDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20250306090601_addLendBookTable")]
+    partial class addLendBookTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,7 +140,7 @@ namespace University.DAL.Migrations
                     b.Property<DateTime>("IssueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("ReturnDate")
+                    b.Property<DateTime>("ReturnDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("StudentId")

@@ -2,11 +2,17 @@
     ViewData["title"] = $"{ViewBag.department}";
 }
 <div>
-    <a asp-action="ShowTeacher" asp-route-id="@ViewBag.Id" class="btn btn-info">Teachers</a>
+    <a href="@Url.Action("ShowTeacher","xDepartment",new{departmentCode=ViewBag.deptId})" class="btn btn-info">
+        Teachers
+    </a>
 </div>
 <div>
-    <a asp-action="ShowCourse" asp-route-id="@ViewBag.Id" class="btn btn-success">Courses</a>
+    <a href="@Url.Action("ShowCourse","xDepartment",new{departmentCode=ViewBag.deptId})" class="btn btn-success">
+        Courses
+    </a>
 </div>
 <div>
-    <a asp-action="ShowStudent" asp-route-id="@ViewBag.Id" class="btn btn-info">Students</a>
+    <a href="@Url.Action("ShowStudent","xDepartment",new{departmentCode=ViewBag.deptId})" class="btn btn-info">
+        Students
+    </a>
 </div>
