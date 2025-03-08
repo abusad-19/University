@@ -1,0 +1,40 @@
+﻿@model IEnumerable<University.DAL.Models.Cart>
+
+@{
+    ViewData["title"] = "Cart";
+}
+
+@if (Model.Count() is 0)
+{
+    <h2>Cart is empty</h2>
+}
+else 
+{
+    <h2>Your cart....</h2>
+    <div>
+        <table class="cart table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model=>model.BookId)</th>
+                    <th>@Html.DisplayNameFor(model=>model.BookName)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.BookId</td>
+                        <td>@item.BookName</td>
+                        <td>
+                            <a asp-action="RemoveFromCart" asp-route-id="@item.BookId">Remove</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div> 
+    <div>
+        <a asp-action="LendBook" class="btn btn-primary">Lend</a>
+        <a asp-action="Index" class="btn btn-success">Add More</a>
+    </div>
+}

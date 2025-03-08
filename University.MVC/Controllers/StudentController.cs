@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using University.BLL.Services;
+using University.DAL;
 using University.DAL.Models;
 
 
@@ -8,27 +10,29 @@ namespace University.MVC.Controllers
 {
     public class StudentController : Controller
     {
-        public readonly appDBcontext _context;
-        public StudentController(appDBcontext context)
+        private readonly StudentBLL _studentBll;
+        public StudentController(StudentBLL studentBLL)
         {
-            _context = context;
+            _studentBll = studentBLL;
         }
+
         public IActionResult Index()
         {
-            return View(_context.StudentTable.ToList());
+            return View(_studentBll.MakeStudentToList());
         }
 
         //making dropdown list for department
         public List<SelectListItem> makeListOfDepartmentForDropdown()
         {
-            List<SelectListItem> departments=new List<SelectListItem>();
-            foreach(var element in _context.DepartmentTable)
+            List<DropdownItem> list = _studentBll.DropdownItemForDepartment();
+            List<SelectListItem> departments = new List<SelectListItem>();
+            foreach (var element in list)
             {
-                departments.Add(new SelectListItem { Text = element.DepartmentName, Value = element.DepartmentName });
+                departments.Add(new SelectListItem { Text = element.Text, Value = element.Value });
             }
             return departments;
         }
-  
+
         public IActionResult Create()
         {
             ViewBag.Departments = makeListOfDepartmentForDropdown();
@@ -38,8 +42,7 @@ namespace University.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("StudentId,StudentName,Department,Session")]Student pupil) 
         {
-            _context.StudentTable.Add(pupil);
-            await _context.SaveChangesAsync();
+            _studentBll.AddStudent(pupil);
             return RedirectToAction(nameof(Index));
         }
 
@@ -47,8 +50,8 @@ namespace University.MVC.Controllers
         { 
             if(id == 0)
                 return NotFound();
-            var pupil=await _context.StudentTable.FirstOrDefaultAsync(x => x.Id == id);
-            if(pupil == null)
+            var pupil = await _studentBll.FindStudentAsync(id);
+            if (pupil == null)
                 return NotFound();
             return View(pupil);  
         }
@@ -56,17 +59,13 @@ namespace University.MVC.Controllers
         [HttpPost,ActionName("Delete")]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
-            var pupil = await _context.StudentTable.FindAsync(id);
-            if(pupil == null)
-                return NotFound();
-            _context.StudentTable.Remove(pupil);
-            await _context.SaveChangesAsync();
+            await _studentBll.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            var pupil = await _context.StudentTable.FirstOrDefaultAsync(x => x.Id == id);
+            var pupil = await _studentBll.FindStudentAsync(id);
             if(pupil == null)
                 return NotFound();
             ViewBag.Departments = makeListOfDepartmentForDropdown();
@@ -76,15 +75,7 @@ namespace University.MVC.Controllers
         [HttpPost,ActionName("Edit")]
         public async Task<IActionResult> Update(int id,[Bind("StudentId,StudentName,Department,Session")]Student pupil)
         {
-            var oldPupil = await _context.StudentTable.FindAsync(id);
-            if (oldPupil == null)
-                return NotFound();
-            oldPupil.StudentId = pupil.StudentId;
-            oldPupil.StudentName = pupil.StudentName;
-            oldPupil.Department = pupil.Department;
-            oldPupil.Session = pupil.Session;
-            _context.StudentTable.Update(oldPupil);
-            await _context.SaveChangesAsync();
+            await _studentBll.UpdateAsync(id, pupil);
             return RedirectToAction(nameof(Index));
         }
     }

@@ -1,0 +1,31 @@
+﻿@model University.DAL.Models.Book
+@{
+    ViewData["title"] = "Details";
+}
+
+<dl>
+    <dt>Book Name</dt>
+    <dd>@Html.DisplayFor(model=>model.Name)</dd>
+    <dt>Writer</dt>
+    <dd>@Html.DisplayFor(model => model.Writer)</dd>
+    <dt>Publication</dt>
+    <dd>@Html.DisplayFor(model => model.Publication)</dd>
+    <dt>Description</dt>
+    <dd>@Html.DisplayFor(model => model.Description)</dd>
+    
+    
+    @if(@ViewBag.quentity is 0)
+    {
+        <button class="btn btn-info">Not Available</button>
+    }
+    else
+    {
+        <h2>@{@ViewBag.quentity} piece Available..</h2>
+
+        <form asp-action="AddToCart" asp-route-id=@ViewBag.id>
+
+            <input type="submit" value="Add To Cart" class="btn btn-primary" />
+        </form>
+    }
+    
+</dl>

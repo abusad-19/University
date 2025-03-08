@@ -1,0 +1,27 @@
+﻿@model University.DAL.Models.Book
+
+@{
+    ViewData["title"] = "Add Book";
+}
+
+<form asp-action="Create">
+    <div>
+        <label asp-for="Name">Book Name</label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Writer">Writer</label>
+        <input asp-for="Writer" />
+    </div>
+    <div>
+        <label asp-for="Publication">Publication</label>
+        <input asp-for="Publication" />
+    </div>
+    <div>
+        <label asp-for="Description">Description</label>
+        <textarea asp-for="Description" rows="5" cols="40"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>

@@ -1,0 +1,11 @@
+﻿@model University.DAL.Models.Student
+
+@{
+    ViewData["title"] = "";
+}
+
+<form asp-action="ReturnBook">
+    <label asp-for="StudentId">Enter Student ID</label>
+    <input asp-for="StudentId" />
+    <input type="submit" value="Enter" class="btn btn-primary"/>
+</form>
