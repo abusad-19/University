@@ -1,4 +1,5 @@
-﻿using University.DAL.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using University.DAL.Models;
 using University.DAL.Repositories;
 
 namespace University.BLL.Services
@@ -83,6 +84,8 @@ namespace University.BLL.Services
                 var book=_repository.GetBookById(item.BookId);
                 temp.Writer = book.Writer;
                 temp.IssueDate=DateTime.Now;
+                book.isBooked = true;
+                _repository.Update(book);
                 _repository.AddLendBook(temp);
                 _repository.RemoveCart(item);
             }
@@ -100,10 +103,20 @@ namespace University.BLL.Services
                 return null;
             book.ReturnDate = DateTime.Now;
             _repository.UpdateLendBook(book);
+            
+            var bookOfBookTable= _repository.GetBookById(book.BookId);
+            if(bookOfBookTable == null)
+                return null;
+            bookOfBookTable.isBooked = false;
+            _repository.Update(bookOfBookTable);
+
             _repository.SaveChanges();
             return book.StudentId;
         }
 
-       
+        public List<Book> CheckStock(string name, string writer)
+        {
+            return _repository.CheckStock(name, writer);
+        }
     }
 }

@@ -4,6 +4,16 @@
     ViewData["title"] = "All Book";
 }
 
+<div>
+    <form asp-action="Index">
+        <input name="searchString" type="search" class="form-control w-50"
+            placeholder="Search by Book, Writer and Publication Name . . . ." />
+
+        <button type="submit" class="btn btn-info">Search</button>
+    </form>
+    
+</div>
+
 <table class="book table">
     <thead>
         <tr>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using University.BLL.Services;
 using University.DAL.Models;
 
@@ -11,9 +12,18 @@ namespace University.MVC.Controllers
         {
             _bookBLL = bookBLL;
         }
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
-            return View(_bookBLL.GetAllBook());
+            var books = _bookBLL.GetAllBook();
+            if(!searchString.IsNullOrEmpty())
+            {
+                books=books.Where(
+                    b=>b.Name!.Contains(searchString)
+                 || b.Writer!.Contains(searchString) 
+                 || b.Publication!.Contains(searchString)
+                 ).ToList();
+            }
+            return View(books);
         }
 
         public IActionResult Create()
@@ -26,6 +36,7 @@ namespace University.MVC.Controllers
         {
             if(book is null)
                 return NotFound();
+
             await _bookBLL.AddBookAsync(book);
             return RedirectToAction(nameof(Index));
         }
@@ -73,6 +84,17 @@ namespace University.MVC.Controllers
                 return NotFound();
 
             var target=_bookBLL.GetBookById(id);
+            var available = _bookBLL.CheckStock(target.Name,target.Writer);
+            if (available.Count() is 0)
+            {
+                ViewBag.quentity = 0;
+            }
+            else
+            {
+                ViewBag.quentity = available.Count();
+                ViewBag.id=available.First().Id;
+            }
+            //ViewBag.Available=available
             return View(target);
         }
 
@@ -149,6 +171,6 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(ReturnBook), new { studentId =studentId});
         }
 
-        
+         
     }
 }

@@ -81,5 +81,15 @@ namespace University.DAL.Repositories
         {
             _context.StudentResultForYearTable.Add(studentResult);
         }
+
+        public void UpdateYearFinalResult(StudentResultForYear studentResult)
+        {
+            _context.StudentResultForYearTable.Update(studentResult);
+        }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

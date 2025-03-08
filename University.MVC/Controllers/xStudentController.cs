@@ -15,101 +15,84 @@ namespace University.MVC.Controllers
             _xStudentBll = bll;
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index(int id)//here id is studentId
         {
-            var student=_context.StudentTable.Where(s=>s.StudentId==id).ToList();
-            if(student==null)
+            var student=_xStudentBll.GetStudentByStudentId(id);
+            if(student is null)
                 return NotFound();
-            ViewBag.studentName = student[0].StudentName;
+            ViewBag.studentName = student.StudentName;
             ViewBag.stdId = id;
             return View();
         }
         public IActionResult CourseCanBeEnroll(int id)
         {
-            var temp=_context.StudentTable.Where(s=>s.StudentId == id).ToList();
-            var student = temp[0];
-            if(temp==null)
+            if(id<=0) 
                 return NotFound();
-            var mayBeLegalCourses=_context.CourseTable.FromSqlInterpolated($"select * from CourseTable where Department={student.Department} and Year={student.Year}").ToList();
-            var enrolledCourses = _context.StudentResultTable.FromSqlInterpolated($"select * from StudentResultTable where StudentId={student.StudentId} and Year={student.Year}").ToList();
-            List<Course> legalCourses = new List<Course>();
-            List<Course> alreadyEnrolled=new List<Course>();//for only using in view
-            foreach (var item1 in mayBeLegalCourses)
-            {
-                bool isEnrolled = false;
-                foreach (var item2 in enrolledCourses)
-                {
-                    if (item1.CourseName == item2.CourseName)
-                    {
-                        isEnrolled = true;
-                        break;
-                    }
-                }
+            var student = _xStudentBll.GetStudentByStudentId(id);
+            if(student is null)
+                return NotFound();
 
-                if (isEnrolled is false)
-                {
-                    legalCourses.Add(item1);
-                }
-                else
-                {
-                    alreadyEnrolled.Add(item1);
-                }
-            }
+            var temp=_xStudentBll.GetEnrolledAndMayBeEnrolledCourse(student); 
+            ViewBag.courses=temp.Item1;
+            ViewBag.alreadyEnrolled = temp.Item2;
 
-            ViewBag.courses=legalCourses;
-            ViewBag.alreadyEnrolled = alreadyEnrolled;
             ViewBag.student = id;
             return View();
         }
 
-        public async Task<IActionResult> EnrollCourse(int pupilId, int courseId) 
+        public IActionResult EnrollCourse(int pupilId, int courseId) 
         {
-            var courseInfo=_context.CourseTable.Where(c=>c.CourseCode==courseId).ToList();
-            StudentResult temp = new StudentResult();
-            temp.StudentId = pupilId;
-            temp.CourseName= courseInfo[0].CourseName;
-            temp.CourseCode= courseInfo[0].CourseCode;
-            temp.CourseCredit= courseInfo[0].Credit;
-            temp.Year = courseInfo[0].Year;
-            temp.IsLab= courseInfo[0].IsLab;
-            _context.StudentResultTable.Add(temp);
-            await _context.SaveChangesAsync();
+            if(pupilId<=0 || courseId<=0)
+                return NotFound();
+            
+            var isCompleted=_xStudentBll.EnrollCourse(pupilId, courseId);
+            if(isCompleted is false)
+                return NotFound();
+
             return RedirectToAction(nameof(CourseCanBeEnroll),new {id=pupilId});
         }
 
-        public IActionResult MyEnrolledCourses(int id)
+        public IActionResult MyEnrolledCourses(int id)//here id is studentId
         {
-            var myEnrolledCourses=_context.StudentResultTable.Where(d=>d.StudentId == id).ToList();
+            if(id<=0)
+                return NotFound();
+            var myEnrolledCourses=_xStudentBll.GetMyEnrolledCourses(id);
             ViewBag.myCourses=myEnrolledCourses;
             return View();
         }
 
-        public IActionResult ShowResultYearWise(int id)
+        public IActionResult ShowResultYearWise(int id)//here id is studentId
         {
-            var student= _context.StudentTable.Where(s=>s.StudentId==id).ToList();
-            ViewBag.student = student[0].StudentName;
-            ViewBag.year = student[0].Year;
+            if(id<=0)
+                return NotFound();
+
+            var student= _xStudentBll.GetStudentByStudentId(id);
+            if(student is null)
+                return NotFound();
+
+            ViewBag.student = student!.StudentName;
+            ViewBag.year = student.Year;
             ViewBag.studentId = id;
             return View();
 
         }
 
-        public IActionResult YearFinalResult(int id, string YearName)
+        public IActionResult YearFinalResult(int id, string YearName)//here id is studentId
         {
-            var pupil = _context.StudentTable.Where(c => c.StudentId == id).ToList();
-            var isResultCreated=_context.StudentResultForYearTable.FromSqlInterpolated
-                ($"Select * from StudentResultForYearTable where StudentId={id} and Year={YearName}").ToList();
-            if(isResultCreated.Count== 0)
+            if (id<=0)
+                return NotFound();
+
+            var temp=_xStudentBll.GetYearFinalResult(id, YearName);
+
+            if(temp is null)
             {
                 ViewBag.result = true;
                 return View();
             }
 
-            ViewBag.yearFinal = isResultCreated[0].GPApoint;
+            ViewBag.yearFinal = temp.Value.Item1;
+            var courses=temp.Value.Item2;
 
-            var courses=_context.StudentResultTable.FromSqlInterpolated
-                ($"Select * from StudentResultTable where StudentId={id} and Year={YearName}").ToList();
-                
             return View(courses);
         }
 
@@ -120,5 +103,7 @@ namespace University.MVC.Controllers
             var books=_xStudentBll.GetIssuedBooks(id);
             return View(books);
         }
+    
+        
     }
 }

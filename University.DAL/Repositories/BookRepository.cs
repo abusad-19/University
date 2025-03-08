@@ -95,6 +95,13 @@ namespace University.DAL.Repositories
             return _context.LendBookTable.Find(bookId);
         }
 
-        
+        public List<Book> CheckStock(string name, string writer)
+        {
+            return _context.BookTable.FromSqlInterpolated
+                ($"select * from BookTable where Name={name} and Writer={writer} and isBooked={false}").
+                ToList();
+        }
+
+
     }
 }

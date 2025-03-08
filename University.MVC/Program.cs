@@ -20,6 +20,8 @@ builder.Services.AddScoped<xDepartmentBLL>();
 builder.Services.AddScoped<xDepartmentRepository>();
 builder.Services.AddScoped<BookBLL>();
 builder.Services.AddScoped<BookRepository>();
+builder.Services.AddScoped<xStudentBLL>();
+builder.Services.AddScoped<xStudentRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

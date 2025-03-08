@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using University.DAL.Models;
+﻿using University.DAL.Models;
 using University.DAL.Repositories;
 
 namespace University.BLL.Services
@@ -162,9 +161,158 @@ namespace University.BLL.Services
                 _repository.UpdateStudent(target);
             }
             _repository.AddYearFinalResult(yearFinal);
-            _repository.SaveChangesAsync();
+            _repository.SaveChanges();
 
             return (yearFinal.Year, courses, yearFinal.GPApoint);
         }
+
+        public async Task<bool> UpdateYearResultAsync(int studentId, string year)
+        {
+            var yearFinal = _repository.GetYearResult(studentId, year);
+            var courses = _repository.GetAllEnrolledCourses(studentId, year);
+
+            if (yearFinal?.GPApoint == 0)
+            {
+                var target = _repository.GetStudentById(studentId); 
+                    
+                float up = 0;
+                float down = 0;
+                StudentResult labCourse = new StudentResult();
+                int lossCredit = 0;
+                foreach (var course in courses)
+                {
+                    up = up + course.CourseCredit * course.GPA ?? 0;
+                    down = down + course.CourseCredit;
+
+                    if (course.IsLab is true)
+                        labCourse = course;
+                    if (course.GPA == 0)
+                        lossCredit = lossCredit + course.CourseCredit;
+                }
+
+                if (labCourse.GPA != 0 && lossCredit < 10)
+                {
+                    yearFinal.GPApoint = up / down;
+                    _repository.UpdateYearFinalResult(yearFinal);
+
+                    if (target?.Year == "First Year")
+                        target.Year = "Second Year";
+                    else if (target?.Year == "Second Year")
+                        target.Year = "Third Year";
+                    else if (target?.Year == "Third Year")
+                        target.Year = "Fourth Year";
+                    else
+                        target!.Year = "Master's";
+                    _repository.UpdateStudent(target);
+                }
+            }
+            else
+            {
+                float up = 0;
+                float down = 0;
+                StudentResult labCourse = new StudentResult();
+                int lossCredit = 0;
+                foreach (var course in courses)
+                {
+                    up = up + course.CourseCredit * course.GPA ?? 0;
+                    down = down + course.CourseCredit;
+
+                    if (course.IsLab is true)
+                        labCourse = course;
+                    if (course.GPA == 0)
+                        lossCredit = lossCredit + course.CourseCredit;
+                }
+
+                if (labCourse.GPA == 0 || lossCredit > 10)
+                {
+                    yearFinal!.GPApoint = 0;
+
+                    //finding the target student
+                    Student? target = new Student();
+                    if (year == "First Year")
+                    {
+                        var mayBeTarget =_repository.GetStudentById(studentId);
+                            
+                        if (mayBeTarget?.Year== "Second Year")
+                        {
+                            target = mayBeTarget;
+                        }
+                        else
+                        {
+                            target = null;
+                        }
+                    }
+                    else if (year == "Second Year")
+                    {
+                        var mayBeTarget = _repository.GetStudentById(studentId);
+
+                        if (mayBeTarget?.Year == "Third Year")
+                        {
+                            target = mayBeTarget;
+                        }
+                        else
+                        {
+                            target = null;
+                        }
+                    }
+                    else if (year == "Third Year")
+                    {
+                        var mayBeTarget = _repository.GetStudentById(studentId);
+
+                        if (mayBeTarget?.Year == "Fourth Year")
+                        {
+                            target = mayBeTarget;
+                        }
+                        else
+                        {
+                            target = null;
+                        }
+                    }
+                    else
+                    {
+                        var mayBeTarget = _repository.GetStudentById(studentId);
+
+                        if (mayBeTarget?.Year == "Master's")
+                        {
+                            target = mayBeTarget;
+                        }
+                        else
+                        {
+                            target = null;
+                        }
+                    }
+
+
+
+                    if (target is null)
+                    {
+                        return true;
+                    }
+
+
+                    //give the target student Demossion
+                    if (target.Year == "Second Year")
+                        target.Year = "First Year";
+                    else if (target.Year == "Third Year")
+                        target.Year = "Second Year";
+                    else if (target.Year == "Fourth Year")
+                        target.Year = "Third Year";
+                    else
+                        target.Year = "Fourth Year";
+                    _repository.UpdateStudent(target);
+                }
+                else
+                {
+                    yearFinal!.GPApoint = up / down;
+                }
+                _repository.UpdateYearFinalResult(yearFinal);
+                
+            }
+            
+            await _repository.SaveChangesAsync();
+            return false;
+        }
+
+
     }
 }
