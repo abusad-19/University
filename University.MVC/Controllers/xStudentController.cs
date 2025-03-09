@@ -1,17 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using University.BLL.Services;
-using University.DAL.Models;
+using University.BLL.Interfaces;
 
 namespace University.MVC.Controllers
 {
     public class xStudentController : Controller
     {
-        private readonly appDBcontext _context;
-        private readonly xStudentBLL _xStudentBll;
-        public xStudentController(appDBcontext context, xStudentBLL bll)
+        private readonly IxStudentBLL _xStudentBll;
+        public xStudentController(IxStudentBLL bll)
         {
-            _context = context;
             _xStudentBll = bll;
         }
 

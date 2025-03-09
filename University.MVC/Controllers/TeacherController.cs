@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using University.BLL.Services;
+using University.BLL.Interfaces;
 using University.DAL.Models;
 
 
@@ -8,8 +8,8 @@ namespace University.MVC.Controllers
 {
     public class TeacherController : Controller
     {
-        private readonly TeacherBLL _teacherBLL;
-        public TeacherController(TeacherBLL bll) 
+        private readonly ITeacherBLL _teacherBLL;
+        public TeacherController(ITeacherBLL bll) 
         { 
             _teacherBLL = bll;
         }

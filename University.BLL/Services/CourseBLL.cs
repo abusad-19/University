@@ -1,9 +1,10 @@
-﻿using University.DAL.Models;
+﻿using University.BLL.Interfaces;
+using University.DAL.Models;
 using University.DAL.Repositories;
 
 namespace University.BLL.Services
 {
-    public class CourseBLL
+    public class CourseBLL:ICourseBLL
     {
         private readonly CourseRepository _courseRepository;
         public CourseBLL(CourseRepository courseRepository)

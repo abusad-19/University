@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using University.BLL.Services;
+using University.BLL.Interfaces;
 using University.DAL.Models;
 
 namespace University.MVC.Controllers
 {
     public class DepartmentController : Controller
     {
-        private readonly DepartmentBLL _departmentBLL;
-        public DepartmentController(DepartmentBLL bll)
+        private readonly IDepartmentBLL _departmentBLL;
+        public DepartmentController(IDepartmentBLL bll)
         {
             _departmentBLL = bll;
         }

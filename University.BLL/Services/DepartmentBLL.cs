@@ -1,9 +1,10 @@
-﻿using University.DAL.Models;
+﻿using University.BLL.Interfaces;
+using University.DAL.Models;
 using University.DAL.Repositories;
 
 namespace University.BLL.Services
 {
-    public class DepartmentBLL
+    public class DepartmentBLL:IDepartmentBLL
     {
         private readonly DepartmentRepository _repository;
         public DepartmentBLL(DepartmentRepository repository)

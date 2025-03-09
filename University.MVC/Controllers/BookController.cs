@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using University.BLL.Services;
+using University.BLL.Interfaces;
 using University.DAL.Models;
 
 namespace University.MVC.Controllers
 {
     public class BookController : Controller
     {
-        private readonly  BookBLL _bookBLL;
-        public BookController(BookBLL bookBLL)
+        private readonly  IBookBLL _bookBLL;
+        public BookController(IBookBLL bookBLL)
         {
             _bookBLL = bookBLL;
         }
@@ -128,6 +128,14 @@ namespace University.MVC.Controllers
         public IActionResult LendBook()
         {
             return View();
+        }
+
+        public IActionResult StudentDetails(int studentId)
+        {
+            if (studentId <= 0)
+                return NotFound();
+            var student=_bookBLL.GetStudentById(studentId);
+            return View(student);
         }
 
         [HttpPost]

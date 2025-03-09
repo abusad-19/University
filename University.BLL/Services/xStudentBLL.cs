@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using University.BLL.Interfaces;
 using University.DAL.Models;
 using University.DAL.Repositories;
 
 namespace University.BLL.Services
 {
-    public class xStudentBLL
+    public class xStudentBLL:IxStudentBLL
     {
         private readonly xStudentRepository _repository;
         public xStudentBLL(xStudentRepository repository)

@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using University.DAL.Models;
-using University.BLL.Services;
+using University.BLL.Interfaces;
 
 namespace University.MVC.Controllers
 {
     public class CourseController : Controller
     {
-        private readonly CourseBLL _courseBLL;
-        public CourseController(CourseBLL courseBLL)
+        private readonly ICourseBLL _courseBLL;
+        public CourseController(ICourseBLL courseBLL)
         {
             _courseBLL = courseBLL;
         }

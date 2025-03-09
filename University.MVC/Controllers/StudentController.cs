@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using University.BLL.Services;
-using University.DAL;
+using University.BLL.Interfaces;
 using University.DAL.Models;
 
 
@@ -10,8 +8,8 @@ namespace University.MVC.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly StudentBLL _studentBll;
-        public StudentController(StudentBLL studentBLL)
+        private readonly IStudentBLL _studentBll;
+        public StudentController(IStudentBLL studentBLL)
         {
             _studentBll = studentBLL;
         }
