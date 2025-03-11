@@ -93,6 +93,6 @@ namespace University.BLL.Services
             return (yearResult.GPApoint, courses);
         }
     
-        
+
     }
 }

@@ -38,7 +38,7 @@ namespace University.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("StudentId,StudentName,Department,Session")]Student pupil) 
+        public async Task<IActionResult> Create([Bind("StudentId,StudentName,Department,Session,AccountPassword")]Student pupil) 
         {
             _studentBll.AddStudent(pupil);
             return RedirectToAction(nameof(Index));
@@ -71,7 +71,7 @@ namespace University.MVC.Controllers
         }
 
         [HttpPost,ActionName("Edit")]
-        public async Task<IActionResult> Update(int id,[Bind("StudentId,StudentName,Department,Session")]Student pupil)
+        public async Task<IActionResult> Update(int id,[Bind("StudentId,StudentName,Department,Session,AccountPassword")]Student pupil)
         {
             await _studentBll.UpdateAsync(id, pupil);
             return RedirectToAction(nameof(Index));
