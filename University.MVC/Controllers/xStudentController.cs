@@ -11,36 +11,37 @@ namespace University.MVC.Controllers
             _xStudentBll = bll;
         }
 
-        public IActionResult StudentLogIn(string message)
-        {
-            ViewBag.Message = message;
-            return View();
-        }
+        //public IActionResult StudentLogIn(string message)
+        //{
+        //    ViewBag.Message = message;
+        //    return View();
+        //}
 
-        [HttpPost]
-        public IActionResult StudentLogIn(int studentId, string password)
-        {
-            if (studentId <= 0 )
-            {
-                return RedirectToAction(nameof(StudentLogIn), new {message= "Please Enter Correct ID" });
-            } 
+        //[HttpPost]
+        //public IActionResult StudentLogIn(int studentId, string password)
+        //{
+        //    if (studentId <= 0 )
+        //    {
+        //        return RedirectToAction(nameof(StudentLogIn), new {message= "Please Enter Correct ID" });
+        //    } 
             
-            var student=_xStudentBll.GetStudentByStudentId(studentId);
-            if(student == null)
-            {
-                return RedirectToAction(nameof(StudentLogIn), new { message = "Please Enter Correct ID" });
-            }
-            else if (student.AccountPassword != password)
-            {
-                return RedirectToAction(nameof(StudentLogIn), new { message = "Please Enter Correct Password" });
-            }
-            return RedirectToAction(nameof(Index), new {id=student.StudentId});
-        }
+        //    var student=_xStudentBll.GetStudentByStudentId(studentId);
+        //    if(student == null)
+        //    {
+        //        return RedirectToAction(nameof(StudentLogIn), new { message = "Please Enter Correct ID" });
+        //    }
+        //    else if (student.AccountPassword != password)
+        //    {
+        //        return RedirectToAction(nameof(StudentLogIn), new { message = "Please Enter Correct Password" });
+        //    }
 
-        public IActionResult StudentLogOut()
-        {
-            return View();
-        }
+        //    return RedirectToAction(nameof(Index), new {id=student.StudentId});
+        //}
+
+        //public IActionResult StudentLogOut()
+        //{
+        //    return View();
+        //}
 
         public IActionResult Index(int id)//here id is studentId
         {

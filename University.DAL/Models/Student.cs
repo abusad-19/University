@@ -8,6 +8,5 @@
         public string? Department { get; set;}
         public string? Session { get; set; }
         public string Year { get; set; } ="First Year";
-        public string? AccountPassword {  get; set; }
     }
 }

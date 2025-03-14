@@ -23,6 +23,10 @@ builder.Services.AddScoped<IBookBLL, BookBLL>();
 builder.Services.AddScoped<BookRepository>();
 builder.Services.AddScoped<IxStudentBLL,xStudentBLL>();
 builder.Services.AddScoped<xStudentRepository>();
+builder.Services.AddScoped<IUserBLL,UserBLL>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<IPermissionBLL, PermissionBLL>();
+builder.Services.AddScoped<PermissionRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

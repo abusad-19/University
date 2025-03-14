@@ -1,0 +1,16 @@
+﻿@model University.DAL.Models.Permission
+@{
+    ViewData["title"] = "Delete User";
+}
+
+<div>
+    <dl>
+        <dt>@Html.DisplayNameFor(model => model.Id)</dt>
+        <dd>@Html.DisplayFor(model => model.Id)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" />
+    </form>
+</div>

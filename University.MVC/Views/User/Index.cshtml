@@ -1,0 +1,31 @@
+﻿@model IEnumerable<University.DAL.Models.User>
+@{
+    ViewData["title"] = "Index";
+}
+
+<table class="user table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model=>model.UserEmail)</th>
+            <th>@Html.DisplayNameFor(model => model.Password)</th>
+            <th>@Html.DisplayNameFor(model => model.UserType)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.UserEmail</td>
+                <td>@item.Password</td>
+                <td>@item.UserType</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id=@item.Id>Edit</a>
+                    <a asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                    <a asp-action="GiveAccess" asp-route-id=@item.Id>GiveAccess</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" >Create</a>

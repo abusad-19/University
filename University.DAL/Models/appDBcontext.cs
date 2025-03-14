@@ -18,5 +18,8 @@ namespace University.DAL.Models
         public DbSet<Book> BookTable { get; set; }
         public DbSet<Cart> CartTable { get; set; }
         public DbSet<LendBook> LendBookTable { get; set;}
+        public DbSet<User> UserTable { get; set; }
+        public DbSet<Permission> PermissionTable { get; set; }
+        public DbSet<UserPermissions> UserPermissionsTable { get; set; }
     }
 }

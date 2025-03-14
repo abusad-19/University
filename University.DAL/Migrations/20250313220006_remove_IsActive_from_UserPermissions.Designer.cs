@@ -12,8 +12,8 @@ using University.DAL.Models;
 namespace University.DAL.Migrations
 {
     [DbContext(typeof(appDBcontext))]
-    [Migration("20250307094022_addPropertyToBook")]
-    partial class addPropertyToBook
+    [Migration("20250313220006_remove_IsActive_from_UserPermissions")]
+    partial class remove_IsActive_from_UserPermissions
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -160,6 +160,22 @@ namespace University.DAL.Migrations
                     b.ToTable("LendBookTable");
                 });
 
+            modelBuilder.Entity("University.DAL.Models.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PermissionTable");
+                });
+
             modelBuilder.Entity("University.DAL.Models.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -271,6 +287,47 @@ namespace University.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TeacherTable");
+                });
+
+            modelBuilder.Entity("University.DAL.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserTable");
+                });
+
+            modelBuilder.Entity("University.DAL.Models.UserPermissions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserPermissionsTable");
                 });
 #pragma warning restore 612, 618
         }
