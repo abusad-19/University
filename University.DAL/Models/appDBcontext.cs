@@ -20,6 +20,8 @@ namespace University.DAL.Models
         public DbSet<LendBook> LendBookTable { get; set;}
         public DbSet<User> UserTable { get; set; }
         public DbSet<Permission> PermissionTable { get; set; }
-        public DbSet<UserPermissions> UserPermissionsTable { get; set; }
+        public DbSet<Role> RoleTable { get; set; }
+        public DbSet<RolePermissions> RolePermissionsTable { get; set; }
+        public DbSet<UserRole> UserRoleTable { get; set; }
     }
 }

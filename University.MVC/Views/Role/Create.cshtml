@@ -1,0 +1,14 @@
+﻿@model University.DAL.Models.Role
+@{
+    ViewData["title"] = "Create";
+}
+
+<form asp-action="Create">
+    <div>
+        <label asp-for="RoleName">Role Name</label>
+        <input asp-for="RoleName" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>

@@ -1,0 +1,14 @@
+﻿@model University.DAL.Models.Role
+@{
+    ViewData["title"] = "Delete";
+}
+
+<div>
+    <dl>
+        <dt>@Html.DisplayNameFor(model => model.RoleName)</dt>
+        <dd>@Html.DisplayFor(model => model.RoleName)</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" />
+    </form>
+</div>

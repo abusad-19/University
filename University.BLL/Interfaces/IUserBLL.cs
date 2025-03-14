@@ -9,9 +9,9 @@ namespace University.BLL.Interfaces
         User? GetUserById(int id);
         void DeleteUser(User user);
         void UpdateUser(User oldUser, User newUser);
-        Permission? GetPermissionById(int id);
-        void AddUserPermissions(int userId, int permissionId);
-        (List<Permission>?, List<Permission>) GiveAccess(int userId);
-        void RemoveUserPermission(int userId, int permitId);
+        Role? GetRoleById(int id);
+        void AddUserRole(int userId, int roleId);
+        (List<Role>?, List<Role>) GiveRole(int userId);
+        void RemoveUserRole(int userId, int roleId);
     }
 }

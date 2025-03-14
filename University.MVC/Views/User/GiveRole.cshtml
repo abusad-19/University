@@ -1,4 +1,4 @@
-﻿@model IEnumerable<University.DAL.Models.Permission>
+﻿@model IEnumerable<University.DAL.Models.Role>
 @{
     ViewData["tilte"] = "Give Access";
 }
@@ -6,7 +6,7 @@
 <table class="permit table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model=>model.Name)</th>
+            <th>@Html.DisplayNameFor(model=>model.RoleName)</th>
         </tr>
     </thead>
     <tbody>
@@ -15,9 +15,9 @@
             @foreach (var item in @ViewBag.added)
             {
                 <tr>
-                    <td>@item.Name</td>
+                    <td>@item.RoleName</td>
                     <td>
-                        <a href="@Url.Action("RemovePermit","User",new{userId=@ViewBag.userId,permissionId=item.Id})">Remove Access</a>
+                        <a href="@Url.Action("RemovePermit","User",new{userId=@ViewBag.userId,roleId=item.Id})">Remove Access</a>
                     </td>
                 </tr>
             }
@@ -25,9 +25,9 @@
         @foreach(var item in Model)
         {
             <tr>
-                <td>@item.Name</td>
+                <td>@item.RoleName</td>
                 <td>
-                    <a href="@Url.Action("GivePermit","User",new{userId=@ViewBag.userId,permissionId=item.Id})">Add Access</a> 
+                    <a href="@Url.Action("GivePermit","User",new{userId=@ViewBag.userId,roleId=item.Id})">Add Access</a> 
                 </td>
             </tr>
         }

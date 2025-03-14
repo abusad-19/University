@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using University.BLL.Interfaces;
+﻿using University.BLL.Interfaces;
 using University.DAL.Models;
 using University.DAL.Repositories;
 
@@ -37,42 +36,41 @@ namespace University.BLL.Services
         {
             oldUser.UserEmail= newUser.UserEmail;
             oldUser.Password= newUser.Password;
-            oldUser.UserType= newUser.UserType;
 
             _repository.UpdateUser(oldUser);
             _repository.SaveChanges();
         }
 
-        public Permission? GetPermissionById(int id)
+        public Role? GetRoleById(int id)
         {
-            return _repository.GetPermissionById(id);
+            return _repository.GetRoleById(id);
         }
 
-        public void AddUserPermissions(int userId,int permissionId)
+        public void AddUserRole(int userId,int roleId)
         {
-            UserPermissions temp = new UserPermissions();
+            UserRole temp = new UserRole();
             temp.UserId = userId;
-            temp.PermissionId = permissionId;
-            _repository.AddUserPermissions(temp);
+            temp.RoleId = roleId;
+            _repository.AddUserRole(temp);
             _repository.SaveChanges();
         }
 
         
-        public (List<Permission>?, List<Permission>) GiveAccess(int userId)
+        public (List<Role>?, List<Role>) GiveRole(int userId)
         {
-            var permissions = _repository.GetAllPermissions();
-            var userPermission = _repository.GetASingleUserPermissions(userId);
-            if (userPermission.Count is 0)
-                return (null,permissions);
+            var roles = _repository.GetAllRoles();
+            var userRoles = _repository.GetASingleUserRoles(userId);
+            if (userRoles.Count is 0)
+                return (null,roles);
 
-            List<Permission> toAdd = new List<Permission>();
-            List<Permission> added = new List<Permission>();
-            foreach (var item1 in permissions)
+            List<Role> toAdd = new List<Role>();
+            List<Role> added = new List<Role>();
+            foreach (var item1 in roles)
             {
                 bool Isadded = false;
-                foreach(var item2 in userPermission)
+                foreach(var item2 in userRoles)
                 {
-                    if(item1.Id == item2.PermissionId)
+                    if(item1.Id == item2.RoleId)
                     {
                         Isadded = true;
                         break;
@@ -91,9 +89,9 @@ namespace University.BLL.Services
             return (added, toAdd);
         }
 
-        public void RemoveUserPermission(int userId,int permitId)
+        public void RemoveUserRole(int userId,int roleId)
         {
-            var target = _repository.GetUserPermissionByUserId_PermissionId(userId, permitId);
+            var target = _repository.GetUserRoleByUserId_RoleId(userId, roleId);
             if (target != null)
             {
                 _repository.RemoveUserPermission(target);

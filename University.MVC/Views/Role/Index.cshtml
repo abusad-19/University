@@ -1,0 +1,29 @@
+﻿@model IEnumerable<University.DAL.Models.Role>
+@{
+    ViewData["title"] = "Index";
+}
+
+<table class="user table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.RoleName)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.RoleName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id=@item.Id>Edit</a>
+                    <a asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                    <a asp-action="GiveAccess" asp-route-id=@item.Id>GiveAccess</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create">Create</a>

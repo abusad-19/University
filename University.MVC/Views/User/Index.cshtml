@@ -8,7 +8,6 @@
         <tr>
             <th>@Html.DisplayNameFor(model=>model.UserEmail)</th>
             <th>@Html.DisplayNameFor(model => model.Password)</th>
-            <th>@Html.DisplayNameFor(model => model.UserType)</th>
         </tr>
     </thead>
     <tbody>
@@ -17,11 +16,10 @@
             <tr>
                 <td>@item.UserEmail</td>
                 <td>@item.Password</td>
-                <td>@item.UserType</td>
                 <td>
                     <a asp-action="Edit" asp-route-id=@item.Id>Edit</a>
                     <a asp-action="Delete" asp-route-id=@item.Id>Delete</a>
-                    <a asp-action="GiveAccess" asp-route-id=@item.Id>GiveAccess</a>
+                    <a asp-action="GiveRole" asp-route-id=@item.Id>GiveAccess</a>
                 </td>
             </tr>
         }

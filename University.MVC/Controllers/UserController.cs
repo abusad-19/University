@@ -65,7 +65,7 @@ namespace University.MVC.Controllers
         }
 
         [HttpPost, ActionName("Edit")]
-        public IActionResult Update(int id, [Bind("UserEmail,Password,UserType")] User user)
+        public IActionResult Update(int id, [Bind("UserEmail,Password")] User user)
         {
             if(id<=0 || user is null)
                 return NotFound();
@@ -78,7 +78,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult GiveAccess(int id)//user id
+        public IActionResult GiveRole(int id)//user id
         {
             if(id<=0)
                 return NotFound();
@@ -87,7 +87,7 @@ namespace University.MVC.Controllers
                 return NotFound();
 
             ViewBag.userId=id;
-            var temp=_userBll.GiveAccess(id);
+            var temp=_userBll.GiveRole(id);
             if(temp.Item1  is null)
                 return View(temp.Item2);
 
@@ -95,27 +95,25 @@ namespace University.MVC.Controllers
             return View(temp.Item2);
         }
 
-        public IActionResult GivePermit(int userId,int permissionId)
+        public IActionResult GivePermit(int userId,int roleId)
         {
-            if(userId<=0 || permissionId<=0)
+            if(userId<=0 || roleId<=0)
                 return NotFound();
             var user= _userBll.GetUserById(userId);
-            var permission=_userBll.GetPermissionById(permissionId);
+            var permission=_userBll.GetRoleById(roleId);
             if(user is null || permission is null)
                 return NotFound();
 
-            _userBll.AddUserPermissions(userId,permissionId);
-            return RedirectToAction(nameof(GiveAccess), new {id=userId});
+            _userBll.AddUserRole(userId,roleId);
+            return RedirectToAction(nameof(GiveRole), new {id=userId});
         }
 
-        public IActionResult RemovePermit(int userId, int permissionId)
+        public IActionResult RemovePermit(int userId, int roleId)
         {
-            if (userId <= 0 || permissionId <= 0)
+            if (userId <= 0 || roleId <= 0)
                 return NotFound();
-            _userBll.RemoveUserPermission(userId,permissionId);
-            return RedirectToAction(nameof(GiveAccess), new {id=userId});
+            _userBll.RemoveUserRole(userId,roleId);
+            return RedirectToAction(nameof(GiveRole), new {id=userId});
         }
-
-
     }
 }

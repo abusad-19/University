@@ -36,35 +36,35 @@ namespace University.DAL.Repositories
             _context.UserTable.Update(user);
         }
 
-        public List<Permission> GetAllPermissions()
+        public List<Role> GetAllRoles()
         {
-            return _context.PermissionTable.ToList();
+            return _context.RoleTable.ToList();
         }
 
-        public Permission? GetPermissionById(int id)
+        public Role? GetRoleById(int id)
         {
-            return _context.PermissionTable.Find(id);
+            return _context.RoleTable.Find(id);
         }
 
-        public void AddUserPermissions(UserPermissions temp)
+        public void AddUserRole(UserRole temp)
         {
-            _context.UserPermissionsTable.Add(temp);
+            _context.UserRoleTable.Add(temp);
         }
 
-        public List<UserPermissions> GetASingleUserPermissions(int userId)
+        public List<UserRole> GetASingleUserRoles(int userId)
         {
-            return _context.UserPermissionsTable.Where(p=>p.UserId == userId).ToList();
+            return _context.UserRoleTable.Where(p=>p.UserId == userId).ToList();
         }
-        public UserPermissions? GetUserPermissionByUserId_PermissionId(int userId, int permitid)
+        public UserRole? GetUserRoleByUserId_RoleId(int userId, int roleId)
         {
-            return _context.UserPermissionsTable.
-                Where(u => u.UserId == userId && u.PermissionId == permitid).
+            return _context.UserRoleTable.
+                Where(u => u.UserId == userId && u.RoleId == roleId).
                 FirstOrDefault();
         }
 
-        public void RemoveUserPermission(UserPermissions target)
+        public void RemoveUserPermission(UserRole target)
         {
-            _context.UserPermissionsTable.Remove(target);
+            _context.UserRoleTable.Remove(target);
         }
     }
 }

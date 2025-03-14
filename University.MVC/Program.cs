@@ -27,6 +27,8 @@ builder.Services.AddScoped<IUserBLL,UserBLL>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<IPermissionBLL, PermissionBLL>();
 builder.Services.AddScoped<PermissionRepository>();
+builder.Services.AddScoped<IRoleBLL, RoleBLL>();
+builder.Services.AddScoped<RoleRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
