@@ -3,6 +3,7 @@ using University.BLL.Interfaces;
 using University.BLL.Services;
 using University.DAL.Models;
 using University.DAL.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ builder.Services.AddScoped<ITeacherBLL,TeacherBLL>();
 builder.Services.AddScoped<TeacherRepository>();
 builder.Services.AddScoped<IxDepartmentBLL,xDepartmentBLL >();
 builder.Services.AddScoped<xDepartmentRepository>();
-builder.Services.AddScoped<IBookBLL, BookBLL>();
+builder.Services.AddScoped<IBookBLL,BookBLL>();
 builder.Services.AddScoped<BookRepository>();
 builder.Services.AddScoped<IxStudentBLL,xStudentBLL>();
 builder.Services.AddScoped<xStudentRepository>();
@@ -29,9 +30,27 @@ builder.Services.AddScoped<IPermissionBLL, PermissionBLL>();
 builder.Services.AddScoped<PermissionRepository>();
 builder.Services.AddScoped<IRoleBLL, RoleBLL>();
 builder.Services.AddScoped<RoleRepository>();
+builder.Services.AddScoped<ILogInBLL, LogInBLL>();
+builder.Services.AddScoped<LogInRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add Authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
+    AddCookie(options =>
+    {
+        options.LoginPath = "/LogIn/Index";
+        options.AccessDeniedPath= "/LogIn/Index";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+    });
+
+// Define Custom Policies for Permissions
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanReadBook", policy => policy.RequireClaim("Permission", "Read_Book"));
+    options.AddPolicy("CanReadStudent", policy => policy.RequireClaim("Permission", "Read_Student"));
+});
 
 var app = builder.Build();
 

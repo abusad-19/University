@@ -1,4 +1,6 @@
-﻿@{
+﻿@using System.Security.Claims
+
+@{
     ViewData["title"] = $"{ViewBag.department}";
 }
 <div>
@@ -11,8 +13,12 @@
         Courses
     </a>
 </div>
-<div>
-    <a href="@Url.Action("ShowStudent","xDepartment",new{departmentCode=ViewBag.deptId})" class="btn btn-info">
-        Students
-    </a>
-</div>
+
+@if(User.HasClaim("Permission","Read_Student"))
+{
+    <div>
+        <a href="@Url.Action("ShowStudent","xDepartment",new{departmentCode=ViewBag.deptId})" class="btn btn-info">
+            Students
+        </a>
+    </div>
+}

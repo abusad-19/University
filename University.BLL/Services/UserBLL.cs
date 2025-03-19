@@ -16,10 +16,15 @@ namespace University.BLL.Services
         {
             return _repository.GetUsers();
         }
-        public void AddUser(User user)
+        public string AddUser(User user)
         {
+            var temp=_repository.IsEmailUsed(user.UserCode);
+            if (temp is true)
+                return "undone";
+
             _repository.AddUser(user);
             _repository.SaveChanges();
+            return "done";
         }
 
         public User? GetUserById(int id)
@@ -34,7 +39,7 @@ namespace University.BLL.Services
         }
         public void UpdateUser(User oldUser, User newUser)
         {
-            oldUser.UserEmail= newUser.UserEmail;
+            oldUser.UserCode = newUser.UserCode;
             oldUser.Password= newUser.Password;
 
             _repository.UpdateUser(oldUser);
@@ -94,9 +99,42 @@ namespace University.BLL.Services
             var target = _repository.GetUserRoleByUserId_RoleId(userId, roleId);
             if (target != null)
             {
-                _repository.RemoveUserPermission(target);
+                _repository.RemoveUserRole(target);
                 _repository.SaveChanges();
             }
+        }
+
+        public (List<Permission>,List<Role>) GetPermissionsAndRolesOfSingleUser(int userId)
+        {
+            var userRoles = _repository.GetASingleUserRoles(userId);
+
+            List<Permission> userPermissions = new List<Permission>();
+            List<int?> permissionsCode= new List<int?>();
+            List<Role> roles = new List<Role>();
+
+            foreach (var item in userRoles)
+            {
+                //rolesId.Add(item.RoleId);
+                roles.Add(_repository.GetRoleById(item.RoleId));
+
+                var rolePermissions = _repository.GetRolePermissions(item.RoleId);
+                foreach (var permission in rolePermissions)
+                {
+                    permissionsCode.Add(permission.PermissionId);
+                }
+            }
+
+            var uniquePermissins=permissionsCode.Distinct().ToList();
+            foreach(var item in uniquePermissins)
+            {
+                var permit = _repository.GetPermission(item);
+                if (permit != null)
+                {
+                    userPermissions.Add(permit);
+                }
+            }
+
+            return (userPermissions, roles);
         }
     }
 }

@@ -3,14 +3,30 @@
     ViewData["title"] = "Create";
 }
 
+@if (ViewBag.ErrorMessage is not null)
+{
+    <h3>@{@ViewBag.ErrorMessage}</h3>
+}
+
 <form asp-action="Create">
     <div>
-        <label asp-for="UserEmail">UserEmail</label>
-        <input asp-for="UserEmail" />
+        <label asp-for="UserCode">UserCode</label>
+        <input asp-for="UserCode" />
     </div>
     <div>
         <label asp-for="Password">Password</label>
         <input asp-for="Password" />
+    </div>
+    <div>
+        <label asp-for="UserType">UserType</label>
+        <select asp-for="UserType">
+            <option value="">--select--</option>
+            <option value="Student">Student</option>
+            <option value="Admin">Admin</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Librarian">Librarian</option>
+            <option value="Department_Employee">Department_Employee</option>
+        </select>
     </div>
     <div>
         <input type="submit" value="Submit" />

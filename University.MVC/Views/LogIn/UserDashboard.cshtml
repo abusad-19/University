@@ -1,0 +1,49 @@
+﻿@using System.Security.Claims
+
+@{
+    ViewData["title"] = "User Profile";
+}
+
+
+@if (User.HasClaim("Permission", "Read_Student"))
+{
+    <a asp-action="Index" asp-controller="Student" class="btn btn-info">Students</a>
+    <br />
+}
+
+@if (User.HasClaim("Permission","Read_Teacher"))
+{
+    <a asp-action="Index" asp-controller="Teacher" class="btn btn-info">Teachers</a>
+    <br />
+}
+
+@if (User.HasClaim("Permission","Read_Department"))
+{
+    <a asp-action="Index" asp-controller="Department" class="btn btn-info">Departments</a>
+    <br />
+}
+
+@if (User.HasClaim("Permission","Return_Book"))
+{
+    <a asp-action="GotoReturnPage" asp-controller="Book" class="btn btn-info">ReturnBook</a>
+    <br />
+}
+
+@if (User.HasClaim("Permission", "Read_Cart"))
+{
+    <a asp-action="Cart" asp-controller="Book" class="btn btn-info">Cart</a>
+    <br />
+}
+
+@if (User.HasClaim("Permission", "Read_StudentProfile"))
+{
+    <a asp-action="Index" asp-controller="xStudent" asp-route-id=@User.FindFirst("UserId")?.Value class="btn btn-info">StudentDashboard</a>
+    <br />
+}
+
+@if (User.Identity.IsAuthenticated)
+{ 
+    <form method="post" action="/LogIn/Logout">
+        <button type="submit">Logout</button>
+    </form>
+}

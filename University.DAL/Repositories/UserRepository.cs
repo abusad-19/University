@@ -14,6 +14,14 @@ namespace University.DAL.Repositories
         {
             return _context.UserTable.ToList();
         }
+
+        public bool IsEmailUsed(int userCode)
+        {
+            var temp = _context.UserTable.FirstOrDefault(u => u.UserCode == userCode);
+            if (temp != null)
+                return true;
+            return false;
+        }
         public void AddUser(User user)
         {
             _context.UserTable.Add(user);
@@ -41,7 +49,7 @@ namespace University.DAL.Repositories
             return _context.RoleTable.ToList();
         }
 
-        public Role? GetRoleById(int id)
+        public Role? GetRoleById(int? id)
         {
             return _context.RoleTable.Find(id);
         }
@@ -62,9 +70,19 @@ namespace University.DAL.Repositories
                 FirstOrDefault();
         }
 
-        public void RemoveUserPermission(UserRole target)
+        public void RemoveUserRole(UserRole target)
         {
             _context.UserRoleTable.Remove(target);
+        }
+
+        public List<RolePermissions> GetRolePermissions(int? roleId)
+        {
+            return _context.RolePermissionsTable.Where(p => p.RoleId == roleId).ToList();
+        }
+
+        public Permission? GetPermission(int? permissionId)
+        {
+            return _context.PermissionTable.FirstOrDefault(p => p.Id == permissionId);
         }
     }
 }

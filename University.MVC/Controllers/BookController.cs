@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using University.BLL.Interfaces;
 using University.DAL.Models;
@@ -8,11 +9,16 @@ namespace University.MVC.Controllers
     public class BookController : Controller
     {
         private readonly  IBookBLL _bookBLL;
-        public BookController(IBookBLL bookBLL)
+        private readonly IUserBLL _userBLL;
+        public BookController(IBookBLL bookBLL,
+            IUserBLL userBLL)
         {
             _bookBLL = bookBLL;
+            _userBLL = userBLL;
         }
-        public IActionResult Index(string searchString)
+
+        //[Authorize(Policy="Read_Book")]
+        public IActionResult Index(string searchString)//here id is userId
         {
             var books = _bookBLL.GetAllBook();
             if(!searchString.IsNullOrEmpty())

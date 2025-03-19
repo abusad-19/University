@@ -6,24 +6,27 @@
 <table class="user table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model=>model.UserEmail)</th>
+            <th>@Html.DisplayNameFor(model=>model.UserCode)</th>
             <th>@Html.DisplayNameFor(model => model.Password)</th>
+            <th>@Html.DisplayNameFor(model => model.UserType)</th>
         </tr>
     </thead>
     <tbody>
         @foreach(var item in Model)
         {
             <tr>
-                <td>@item.UserEmail</td>
+                <td>@item.UserCode</td>
                 <td>@item.Password</td>
+                <td>@item.UserType</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id=@item.Id>Edit</a>
-                    <a asp-action="Delete" asp-route-id=@item.Id>Delete</a>
-                    <a asp-action="GiveRole" asp-route-id=@item.Id>GiveAccess</a>
+                    <a asp-action="Edit" asp-route-id=@item.Id class="btn btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id=@item.Id class="btn btn-info">Delete</a>
+                    <a asp-action="GiveRole" asp-route-id=@item.Id class="btn btn-primary">AssignRole</a>
+                    <a asp-action="ShowRolesAndPermissions" asp-route-id=@item.Id class="btn btn-info">See Permissions</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<a asp-action="Create" >Create</a>
+<a asp-action="Create" class="btn btn-primary">Create</a>

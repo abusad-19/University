@@ -17,7 +17,9 @@
                 <tr>
                     <td>@item.RoleName</td>
                     <td>
-                        <a href="@Url.Action("RemovePermit","User",new{userId=@ViewBag.userId,roleId=item.Id})">Remove Access</a>
+                        <a href="@Url.Action("RemovePermit","User",new{userId=@ViewBag.userId,roleId=item.Id})" class="btn btn-primary">
+                            Remove Role
+                        </a>
                     </td>
                 </tr>
             }
@@ -27,7 +29,9 @@
             <tr>
                 <td>@item.RoleName</td>
                 <td>
-                    <a href="@Url.Action("GivePermit","User",new{userId=@ViewBag.userId,roleId=item.Id})">Add Access</a> 
+                    <a href="@Url.Action("GivePermit","User",new{userId=@ViewBag.userId,roleId=item.Id})" class="btn btn-primary">
+                        Add Role
+                    </a>
                 </td>
             </tr>
         }

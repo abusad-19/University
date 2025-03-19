@@ -17,23 +17,30 @@ namespace University.MVC.Controllers
             return View(_userBll.GetAll());
         }
 
-        public IActionResult Create()
+        public IActionResult Create(string errorMessage)
         {
+            ViewBag.ErrorMessage = errorMessage;
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(User user)
         {
-            if(user == null)
-                return NotFound();
-            _userBll.AddUser(user);
+            if(user.UserCode <=0 || user.Password==null)
+                return RedirectToAction(nameof(Create),
+                    new { errorMessage ="Please enter Email & Password"});
+
+            var status=_userBll.AddUser(user);
+            if(status== "undone")
+                return RedirectToAction(nameof(Create),
+                    new { errorMessage = "This email is already used. Please use another email" });
+
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Delete(int id)
         {
-            if (id == 0)
+            if (id <= 0)
                 return NotFound();
             var target=_userBll.GetUserById(id);
             if (target is null)
@@ -65,7 +72,7 @@ namespace University.MVC.Controllers
         }
 
         [HttpPost, ActionName("Edit")]
-        public IActionResult Update(int id, [Bind("UserEmail,Password")] User user)
+        public IActionResult Update(int id, [Bind("UserCode,Password,UserType")] User user)
         {
             if(id<=0 || user is null)
                 return NotFound();
@@ -115,5 +122,21 @@ namespace University.MVC.Controllers
             _userBll.RemoveUserRole(userId,roleId);
             return RedirectToAction(nameof(GiveRole), new {id=userId});
         }
+
+        public IActionResult ShowRolesAndPermissions(int id)//userId
+        {
+            if(id<=0)
+                return NotFound();
+
+            var user=_userBll.GetUserById(id);
+            if (user is null)
+                return NotFound();
+            var temp=_userBll.GetPermissionsAndRolesOfSingleUser(id);
+            ViewBag.Permissions=temp.Item1;
+            ViewBag.Roles=temp.Item2;
+            return View();
+        }
+
+
     }
 }

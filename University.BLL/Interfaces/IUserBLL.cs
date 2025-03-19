@@ -5,7 +5,7 @@ namespace University.BLL.Interfaces
     public interface IUserBLL
     {
         List<User> GetAll();
-        void AddUser(User user);
+        string AddUser(User user);
         User? GetUserById(int id);
         void DeleteUser(User user);
         void UpdateUser(User oldUser, User newUser);
@@ -13,5 +13,6 @@ namespace University.BLL.Interfaces
         void AddUserRole(int userId, int roleId);
         (List<Role>?, List<Role>) GiveRole(int userId);
         void RemoveUserRole(int userId, int roleId);
+        (List<Permission>, List<Role>) GetPermissionsAndRolesOfSingleUser(int userId);
     }
 }
