@@ -32,6 +32,8 @@ builder.Services.AddScoped<IRoleBLL, RoleBLL>();
 builder.Services.AddScoped<RoleRepository>();
 builder.Services.AddScoped<ILogInBLL, LogInBLL>();
 builder.Services.AddScoped<LogInRepository>();
+builder.Services.AddScoped<IEmployeeBLL, EmployeeBLL>();
+builder.Services.AddScoped<EmployeeRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -48,7 +50,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // Define Custom Policies for Permissions
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("CanReadBook", policy => policy.RequireClaim("Permission", "Read_Book"));
+    options.AddPolicy("CanReadStudentProfile", policy => policy.RequireClaim("Permission", "Read_StudentProfile"));
     options.AddPolicy("CanReadStudent", policy => policy.RequireClaim("Permission", "Read_Student"));
 });
 

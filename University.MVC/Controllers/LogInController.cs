@@ -45,8 +45,8 @@ namespace University.MVC.Controllers
 
             var claims = new List<Claim>
             {
-                //new Claim(ClaimTypes.,user.UserEmail),
-                new Claim("UserId",$"{consumer.Id}")
+                new Claim(ClaimTypes.Name,consumer.UserType),
+                new Claim("UserCode",$"{consumer.UserCode}")
             };
 
             foreach (var item in temp.Item1)
