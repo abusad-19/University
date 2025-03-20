@@ -52,5 +52,10 @@ namespace University.BLL.Services
             _employeeRepository.DeleteEmployee(employee);
             _employeeRepository.SaveChanges();
         }
+
+        public Employee? GetEmployeeByEmployeeID(int employeeId)
+        {
+            return _employeeRepository.GetEmployeeByEmployeeID(employeeId);
+        }
     }
 }

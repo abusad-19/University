@@ -14,5 +14,10 @@ namespace University.DAL.Repositories
         {
             return _context.UserTable.FirstOrDefault(u => u.UserCode == userCode);
         }
+
+        public Department? GetDepartment(string departmentName)
+        {
+            return _context.DepartmentTable.FirstOrDefault(d => d.DepartmentName == departmentName);
+        }
     }
 }

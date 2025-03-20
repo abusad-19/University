@@ -28,12 +28,12 @@ namespace University.MVC.Controllers
         {
             if(user.UserCode <=0 || user.Password==null)
                 return RedirectToAction(nameof(Create),
-                    new { errorMessage ="Please enter Email & Password"});
+                    new { errorMessage ="Please enter UserCode & Password"});
 
             var status=_userBll.AddUser(user);
             if(status== "undone")
                 return RedirectToAction(nameof(Create),
-                    new { errorMessage = "This email is already used. Please use another email" });
+                    new { errorMessage = "This UserCode is already used. Please use another email" });
 
             return RedirectToAction(nameof(Index));
         }

@@ -51,7 +51,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("CanReadStudentProfile", policy => policy.RequireClaim("Permission", "Read_StudentProfile"));
-    options.AddPolicy("CanReadStudent", policy => policy.RequireClaim("Permission", "Read_Student"));
+    options.AddPolicy("CanAccessDepartmentProfile", policy => policy.RequireClaim("Permission", "Read_DepartmentProfile"));
 });
 
 var app = builder.Build();

@@ -44,5 +44,10 @@ namespace University.DAL.Repositories
         {
             _context.EmployeeTable.Remove(employee);
         }
+
+        public Employee? GetEmployeeByEmployeeID(int employeeId)
+        {
+            return _context.EmployeeTable.FirstOrDefault(e => e.EmployeeId == employeeId);
+        }
     }
 }

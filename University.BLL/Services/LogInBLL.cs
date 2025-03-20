@@ -16,5 +16,10 @@ namespace University.BLL.Services
         {
             return _repository.GetUser(userCode);
         }
+
+        public Department? GetDepartment(string departmentName)
+        {
+            return _repository.GetDepartment(departmentName);
+        }
     }
 }

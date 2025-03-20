@@ -10,5 +10,6 @@ namespace University.BLL.Interfaces
         Employee? GetEmployeeById(int id);
         void UpdateEmployee(Employee employee);
         void DeleteEmployee(Employee employee);
+        Employee? GetEmployeeByEmployeeID(int employeeId);
     }
 }

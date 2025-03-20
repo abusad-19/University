@@ -14,7 +14,7 @@
     </a>
 </div>
 
-@if(User.HasClaim("Permission","Read_Student"))
+@if (User.HasClaim("Permission", "Read_DepartmentProfile"))
 {
     <div>
         <a href="@Url.Action("ShowStudent","xDepartment",new{departmentCode=ViewBag.deptId})" class="btn btn-info">

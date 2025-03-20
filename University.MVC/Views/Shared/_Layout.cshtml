@@ -31,9 +31,38 @@
                         <li>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Library</a>
                         </li>
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="LogIn" asp-action="Index">LogIn</a>
-                        </li>
+
+                        @using System.Security.Claims
+
+                        @if (User.HasClaim("Permission", "Read_StudentProfile"))
+                        {
+                            <li>
+                                <a asp-action="Index" asp-controller="xStudent" asp-route-id=@User.FindFirst("UserCode")?.Value class="nav-link text-dark">StudentDashboard</a>
+                                <br />
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "Read_DepartmentProfile"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index","xDepartment",new{departmentCode=@User.FindFirst("DepartmentCode")?.Value})" class="nav-link text-dark">
+                                    DepartmentDashboard
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.Identity!.IsAuthenticated)
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="LogIn" asp-action="LogOut">LogOut</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="LogIn" asp-action="Index">LogIn</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

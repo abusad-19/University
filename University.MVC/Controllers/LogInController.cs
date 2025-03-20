@@ -11,11 +11,14 @@ namespace University.MVC.Controllers
     {
         private readonly ILogInBLL _loginBLL;
         private readonly IUserBLL _userBLL;
+        private readonly IEmployeeBLL _employeeBLL;
         public LogInController(ILogInBLL loginBLL,
-            IUserBLL userBLL)
+            IUserBLL userBLL,
+            IEmployeeBLL employeeBLL)
         {
             _loginBLL = loginBLL;
             _userBLL = userBLL;
+            _employeeBLL= employeeBLL;
         }
 
         public IActionResult Index(string errorMessage)
@@ -46,12 +49,20 @@ namespace University.MVC.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name,consumer.UserType),
-                new Claim("UserCode",$"{consumer.UserCode}")
+                new Claim("UserCode",$"{consumer.UserCode}")//userCode is need to view StudentDashboard
             };
 
             foreach (var item in temp.Item1)
             {
                 claims.Add(new Claim("Permission", $"{item.Name}"));
+            }
+
+            //DepartmentCode is need to get departmentProfile
+            if (consumer.UserType == "Department_Employee")
+            {
+                var employee = _employeeBLL.GetEmployeeByEmployeeID(consumer.UserCode);
+                var department = _loginBLL.GetDepartment(employee.DutyPlace);
+                claims.Add(new Claim("DepartmentCode", $"{department.DepartmentCode}"));
             }
 
             var claimsIdentity=new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
@@ -65,7 +76,7 @@ namespace University.MVC.Controllers
                 authProperties
                 );
 
-            return RedirectToAction(nameof(UserDashboard));
+            return RedirectToAction("Index","Home");
         }
 
         public async Task<IActionResult> LogOut()
@@ -74,9 +85,10 @@ namespace University.MVC.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult UserDashboard()
-        {
-            return View();
-        }
+        //public IActionResult UserDashboard()
+        //{
+            
+        //    return View();
+        //}
     }
 }
