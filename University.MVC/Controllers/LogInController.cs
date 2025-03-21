@@ -84,11 +84,5 @@ namespace University.MVC.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
-
-        //public IActionResult UserDashboard()
-        //{
-            
-        //    return View();
-        //}
     }
 }

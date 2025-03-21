@@ -31,12 +31,12 @@ else
                             <a />
                     </td>
                     <td>
-                        @if (User.HasClaim("Permission", "Edit_Department"))
+                        @if (User.HasClaim("Permission", "department_CRUD_operation"))
                         {
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Edit</a>
                         }
 
-                        @if (User.HasClaim("Permission", "Delete_Department"))
+                        @if (User.HasClaim("Permission", "department_CRUD_operation"))
                         {
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info">Delete</a>
                         }
@@ -46,7 +46,7 @@ else
         </tbody>
     </table>
 
-    @if (User.HasClaim("Permission", "Add_Department"))
+    @if (User.HasClaim("Permission", "department_CRUD_operation"))
     {
         <a asp-action="Create" class="btn btn-info">Add New Department</a>
     }

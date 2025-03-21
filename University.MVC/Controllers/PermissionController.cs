@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using University.BLL.Interfaces;
 using University.DAL.Models;
 
@@ -12,16 +13,19 @@ namespace University.MVC.Controllers
             _permissionBll = permissionBll;
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult Index()
         {
             return View(_permissionBll.GetAll());
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         [HttpPost]
         public IActionResult Create(Permission permission)
         {
@@ -31,6 +35,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult Delete(int id)
         {
             if (id == 0)
@@ -41,6 +46,7 @@ namespace University.MVC.Controllers
             return View(target);
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         [HttpPost, ActionName("Delete")]
         public IActionResult ConfirmDelete(int id)
         {
@@ -54,6 +60,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult Edit(int id)
         {
             if (id == 0)
@@ -64,6 +71,7 @@ namespace University.MVC.Controllers
             return View(target);
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         [HttpPost, ActionName("Edit")]
         public IActionResult Update(int id, [Bind("Name")] Permission permission)
         {

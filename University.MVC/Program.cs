@@ -52,6 +52,19 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("CanReadStudentProfile", policy => policy.RequireClaim("Permission", "Read_StudentProfile"));
     options.AddPolicy("CanAccessDepartmentProfile", policy => policy.RequireClaim("Permission", "Read_DepartmentProfile"));
+    options.AddPolicy("CanCreateCertificateRequest", policy => policy.RequireClaim("Permission","Create_CertificateRequest"));
+    options.AddPolicy("CanRead_ShowRequest", policy => policy.RequireClaim("Permission", "Read_ShowRequest"));
+    options.AddPolicy("CanApproveOrRejectRequest", policy => policy.RequireClaim("Permission", "ApproveOrRejectRequest"));
+    options.AddPolicy("CanReceiveCertificate", policy => policy.RequireClaim("Permission", "ReceiveCertificate"));
+    options.AddPolicy("CanCRUD_ofUser", policy => policy.RequireClaim("Permission", "user_CRUD_operation"));
+    options.AddPolicy("CanManagePermissionRole", policy => policy.RequireClaim("Permission", "ManagePermission&Role"));
+    options.AddPolicy("CanTeacher_CRUD_operation", policy => policy.RequireClaim("Permission", "teacher_CRUD_operation"));
+    options.AddPolicy("CanStudent_CRUD_operation", policy => policy.RequireClaim("Permission", "student_CRUD_operation"));
+    options.AddPolicy("CanCourse_CRUD_operation", policy => policy.RequireClaim("Permission", "course_CRUD_operation"));
+    options.AddPolicy("CanEmployee_CRUD_operation", policy => policy.RequireClaim("Permission", "employee_CRUD_operation"));
+    options.AddPolicy("CanDepartment_CRUD_operation", policy => policy.RequireClaim("Permission", "department_CRUD_operation"));
+    options.AddPolicy("CanLibraryManage", policy => policy.RequireClaim("Permission", "LibraryManagement"));
+
 });
 
 var app = builder.Build();

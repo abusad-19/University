@@ -26,20 +26,19 @@ else
                     <td>@item.EmployeeId</td>
                     <td>@item.EmployeeName</td>
                     <td>@item.DutyPlace</td>
+                    @if (User.HasClaim("Permission", "employee_CRUD_operation"))
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id=@item.Id class="btn btn-primary">Edit</a>
+                            <a asp-action="Delete" asp-route-id=@item.Id class="btn btn-primary">Delete</a>
+                        </td>
+                    }
                 </tr>
-                @if(User.HasClaim("Permission","Edit_Employee"))
-                {
-                    <a asp-action="Edit" asp-route-id=@item.Id class="btn btn-primary">Edit</a>
-                }
-                @if (User.HasClaim("Permission", "Delete_Employee"))
-                {
-                    <a asp-action="Delete" asp-route-id=@item.Id class="btn btn-primary">Delete</a>
-                }
             }
         </tbody>
     </table>
     <br />
-    @if (User.HasClaim("Permission", "Add_Employee"))
+    @if (User.HasClaim("Permission", "employee_CRUD_operation"))
     {
         <a asp-action="Create" class="btn btn-primary">Add Employee</a>
     }

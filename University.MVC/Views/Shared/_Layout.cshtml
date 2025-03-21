@@ -51,6 +51,61 @@
                             </li>
                         }
 
+                        @if (User.HasClaim("Permission", "user_CRUD_operation"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "ManagePermission&Role"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Permission" asp-action="Index">Permissions</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "teacher_CRUD_operation"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Index">Teacher</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "student_CRUD_operation"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index">Student</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "course_CRUD_operation"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">Course</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "employee_CRUD_operation"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "LibraryManagement"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Cart">Cart</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="GotoReturnPage">ReturnBook</a>
+                            </li>
+                        }
+
                         @if (User.Identity!.IsAuthenticated)
                         {
                             <li>

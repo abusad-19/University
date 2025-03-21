@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using University.BLL.Interfaces;
 using University.DAL.Models;
 
@@ -12,15 +13,19 @@ namespace University.MVC.Controllers
             _roleBLL = roleBLL;
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult Index()
         {
             return View(_roleBLL.GetAllRole());
         }
+
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         [HttpPost]
         public IActionResult Create(Role role)
         {
@@ -30,6 +35,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult Delete(int id)
         {
             if (id == 0)
@@ -41,6 +47,7 @@ namespace University.MVC.Controllers
             return View(target);
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         [HttpPost, ActionName("Delete")]
         public IActionResult ConfirmDelete(int id)
         {
@@ -54,6 +61,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult Edit(int id)
         {
             if (id == 0)
@@ -64,6 +72,7 @@ namespace University.MVC.Controllers
             return View(target);
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         [HttpPost, ActionName("Edit")]
         public IActionResult Update(int id, [Bind("RoleName")] Role role)
         {
@@ -78,6 +87,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult GiveAccess(int id)//Role id
         {
             if (id <= 0)
@@ -95,6 +105,7 @@ namespace University.MVC.Controllers
             return View(temp.Item2);
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult GivePermit(int roleId, int permissionId)
         {
             if (roleId <= 0 || permissionId <= 0)
@@ -108,6 +119,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(GiveAccess), new { id = roleId });
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult RemovePermit(int roleId, int permissionId)
         {
             if (roleId <= 0 || permissionId <= 0)

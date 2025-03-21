@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using University.DAL.Models;
 using University.BLL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace University.MVC.Controllers
 {
+    [Authorize(Policy = "CanCourse_CRUD_operation")]
     public class CourseController : Controller
     {
         private readonly ICourseBLL _courseBLL;

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using University.BLL.Interfaces;
 using University.DAL.Models;
 using University.MVC.View_Models;
 
 namespace University.MVC.Controllers
 {
+    [Authorize(Policy = "CanEmployee_CRUD_operation")]
     public class EmployeeController : Controller
     {
         private readonly IEmployeeBLL _employeeBll;

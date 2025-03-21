@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using University.BLL.Interfaces;
 using University.DAL.Models;
@@ -6,6 +7,7 @@ using University.DAL.Models;
 
 namespace University.MVC.Controllers
 {
+    [Authorize(Policy = "CanTeacher_CRUD_operation")]
     public class TeacherController : Controller
     {
         private readonly ITeacherBLL _teacherBLL;
@@ -13,6 +15,8 @@ namespace University.MVC.Controllers
         { 
             _teacherBLL = bll;
         }
+
+        //[Authorize(Policy = "CanTeacher_CRUD_operation")]
         public IActionResult Index()
         {
             return View(_teacherBLL.GetTeacherList());
@@ -30,12 +34,14 @@ namespace University.MVC.Controllers
             return departments;
         }
 
+        //[Authorize(Policy = "CanTeacher_CRUD_operation")]
         public IActionResult Create()
         {
             ViewBag.Departments=makeDropdownListOfDepartment();
             return View();
         }
 
+        //[Authorize(Policy = "CanTeacher_CRUD_operation")]
         [HttpPost]
         public async Task<IActionResult> Create([Bind("TeacherId,TeacherName,Department")]Teacher teacher)
         {
@@ -43,6 +49,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //[Authorize(Policy = "CanTeacher_CRUD_operation")]
         public async Task<IActionResult> Delete(int id)
         {
             if(id is 0)
@@ -53,6 +60,7 @@ namespace University.MVC.Controllers
             return View(teacher);
         }
 
+        //[Authorize(Policy = "CanTeacher_CRUD_operation")]
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
@@ -62,6 +70,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //[Authorize(Policy = "CanTeacher_CRUD_operation")]
         public async Task<IActionResult> Edit(int id)
         {
             if(id is 0)
@@ -73,6 +82,7 @@ namespace University.MVC.Controllers
             return View(tutor);
         }
 
+        //[Authorize(Policy = "CanTeacher_CRUD_operation")]
         [HttpPost,ActionName("Edit")]
         public async Task<IActionResult> Update(int id, [Bind("TeacherId,TeacherName,Department")]Teacher newTutor)
         {

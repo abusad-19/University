@@ -14,17 +14,20 @@ namespace University.MVC.Controllers
             _userBll = userBll;
         }
 
+        [Authorize(Policy = "CanCRUD_ofUser")]
         public IActionResult Index()
         {
             return View(_userBll.GetAll());
         }
-
+        
+        [Authorize(Policy = "CanCRUD_ofUser")]
         public IActionResult Create(string errorMessage)
         {
             ViewBag.ErrorMessage = errorMessage;
             return View();
         }
 
+        [Authorize(Policy = "CanCRUD_ofUser")]
         [HttpPost]
         public IActionResult Create(User user)
         {
@@ -40,6 +43,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Policy = "CanCRUD_ofUser")]
         public IActionResult Delete(int id)
         {
             if (id <= 0)
@@ -50,6 +54,7 @@ namespace University.MVC.Controllers
             return View(target);
         }
 
+        [Authorize(Policy = "CanCRUD_ofUser")]
         [HttpPost, ActionName("Delete")]
         public IActionResult ConfirmDelete(int id)
         {
@@ -63,6 +68,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Policy = "CanCRUD_ofUser")]
         public IActionResult Edit(int id)
         {
             if (id == 0)
@@ -73,6 +79,7 @@ namespace University.MVC.Controllers
             return View(target);
         }
 
+        [Authorize(Policy = "CanCRUD_ofUser")]
         [HttpPost, ActionName("Edit")]
         public IActionResult Update(int id, [Bind("UserCode,Password,UserType")] User user)
         {
@@ -87,6 +94,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult GiveRole(int id)//user id
         {
             if(id<=0)
@@ -104,6 +112,7 @@ namespace University.MVC.Controllers
             return View(temp.Item2);
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult GivePermit(int userId,int roleId)
         {
             if(userId<=0 || roleId<=0)
@@ -117,6 +126,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(GiveRole), new {id=userId});
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult RemovePermit(int userId, int roleId)
         {
             if (userId <= 0 || roleId <= 0)
@@ -125,6 +135,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(GiveRole), new {id=userId});
         }
 
+        [Authorize(Policy = "CanManagePermissionRole")]
         public IActionResult ShowRolesAndPermissions(int id)//userId
         {
             if(id<=0)
@@ -139,7 +150,7 @@ namespace University.MVC.Controllers
             return View();
         }
 
-        //[Authorize(Policy = "CanReadStudentProfile")]
+        [Authorize(Policy = "CanCreateCertificateRequest")]
         //this method canbe used by student,teacher & employee
         public IActionResult CreateCertificateWithdrawRequest(int applicantId, string type)//here applicantId=studentId,teacherId,employeeId and type=student,teacher,employee
         {
@@ -150,6 +161,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(ShowRequest), new { applicantId = applicantId });
         }
 
+        [Authorize(Policy = "CanRead_ShowRequest")]
         public IActionResult ShowRequest(int applicantId,int deptCode)
         {
             var dept = _userBll.GetDepartmentByDeptCode(deptCode);
@@ -181,6 +193,7 @@ namespace University.MVC.Controllers
             return View(Model);
         }
 
+        [Authorize(Policy = "CanApproveOrRejectRequest")]
         public IActionResult ApproveOrRejectRequest(int requestId, int approverId, int applicantId, int accept)
         {
             if(requestId <= 0 || accept < 0 || accept > 1)
@@ -204,6 +217,7 @@ namespace University.MVC.Controllers
             }
         }
 
+        [Authorize(Policy = "CanReceiveCertificate")]
         public IActionResult ReceiveCertificate(int requestId, int applicantId)//here applicantId=studentId,teacherId,employeeId and type=student,teacher,employee
         {
             if (requestId <= 0 || applicantId<=0)

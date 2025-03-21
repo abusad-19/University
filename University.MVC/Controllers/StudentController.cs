@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using University.BLL.Interfaces;
 using University.DAL.Models;
@@ -6,6 +7,7 @@ using University.DAL.Models;
 
 namespace University.MVC.Controllers
 {
+    [Authorize(Policy = "CanStudent_CRUD_operation")]
     public class StudentController : Controller
     {
         private readonly IStudentBLL _studentBll;

@@ -23,7 +23,7 @@
     {
         <h2>@{@ViewBag.quentity} piece Available..</h2>
 
-        if(User.HasClaim("Permission","AddToCart"))
+        if (User.HasClaim("Permission", "LibraryManagement"))
         {
             <form asp-action="AddToCart" asp-route-id=@ViewBag.id>
 
