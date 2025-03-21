@@ -113,7 +113,7 @@ namespace University.DAL.Repositories
         public List<CertificateWithdrawApprovalHistory> GetRequestByApplicant(int applicantId)
         {
             return _context.CertificateWithdrawApprovalHistoryTable.
-                Where(c=>c.ApplicantId==applicantId && c.RecievedDate==null).ToList();
+                Where(c=>c.ApplicantId==applicantId).ToList();
         }
 
         public List<CertificateWithdrawApprovalHistory> GetRequestByDepartment(string deptName)
@@ -125,9 +125,17 @@ namespace University.DAL.Repositories
         public List<CertificateWithdrawApprovalHistory> GetRequest()
         {
             return _context.CertificateWithdrawApprovalHistoryTable.Where(c=>
-            c.SyndicateApprove==null && c.RequestStatus==1).ToList();
+            c.DepartmentalApprove!=null && c.SyndicateApprove==null && c.RequestStatus==1).ToList();
         }
 
+        public CertificateWithdrawApprovalHistory? GetRequestById(int id)
+        {
+            return _context.CertificateWithdrawApprovalHistoryTable.Find(id);
+        }
 
+        public void UpdateCertificateWithdrawApprovalHistory(CertificateWithdrawApprovalHistory request)
+        {
+            _context.CertificateWithdrawApprovalHistoryTable.Update(request);
+        }
     }
 }

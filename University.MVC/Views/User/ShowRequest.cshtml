@@ -20,7 +20,6 @@ else
                 <th>DepartmentalApprove</th>
                 <th>SyndicateApprove</th>
                 <th>RecievedDate</th>
-                @* <th>RequestStatus</th> *@
             </tr>
         </thead>
         <tbody>
@@ -34,35 +33,50 @@ else
                     <td>@item.DepartmentalApprove</td>
                     <td>@item.SyndicateApprove</td>
                     <td>@item.RecievedDate</td>
-                    @* <td>@item.RequestStatus</td> *@
+                    
                     @if(Model.ApplicantId>0)//cancel by applicant
                     {
-                        if (item.DepartmentalApprove == null)
+                        if (item.DepartmentalApprove == null && item.RequestStatus==1)
                         {
                             <td>
-                                <a asp-action="" class="btn btn-primary">Cancel Request</a>
+                                <a href="@Url.Action("ApproveOrRejectRequest","User",new{requestId=item.Id,applicantId=Model.ApplicantId})" class="btn btn-primary">
+                                    Cancel Request
+                                </a>
                             </td>
                         }
                         if(item.SyndicateApprove!=null && item.RequestStatus==1)
                         {
                             <td>
-                                <a asp-action="" class="btn btn-primary">Receive</a>
+                                <a href="@Url.Action("ReceiveCertificate","User",new{requestId=item.Id,applicantId=Model.ApplicantId})" class="btn btn-primary">
+                                    Receive
+                                </a>
                             </td>
                         }
                     }
                     else if(Model.deptCode>0)//this section is for department
                     {
                         <td>
-                            <a asp-action="" class="btn btn-success">Approve</a>
-                            <a asp-action="" class="btn btn-primary">Reject</a>
+                            <a href="@Url.Action("ApproveOrRejectRequest","User",new{requestId=item.Id,approverId=Model.deptCode,accept=1})" class="btn btn-success">
+                                Approve
+                            </a>
+                            <a href="@Url.Action("ApproveOrRejectRequest","User",new{requestId=item.Id,approverId=Model.deptCode})" class="btn btn-primary">
+                                Reject
+                            </a>
                         </td>
                     }
                     else//this section is for VC
                     {
-                        <td>
-                            <a asp-action="" class="btn btn-success">Approve</a>
-                            <a asp-action="" class="btn btn-primary">Reject</a>
-                        </td>
+                        @if(item.DepartmentalApprove!=null && item.RequestStatus==1)
+                        {
+                            <td>
+                                <a href="@Url.Action("ApproveOrRejectRequest","User",new{requestId=item.Id,accept=1})" class="btn btn-success">
+                                    Approve
+                                </a>
+                                <a href="@Url.Action("ApproveOrRejectRequest","User",new{requestId=item.Id})" class="btn btn-primary">
+                                    Reject
+                                </a>
+                            </td>
+                        }
                     }
                 </tr>
             }

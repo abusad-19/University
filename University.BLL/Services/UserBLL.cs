@@ -200,6 +200,68 @@ namespace University.BLL.Services
             }
         }
         
+        public int ApproveOrRejectRequest(int requestId, int approverId, int applicantId, int accept)
+        {
+            var request=_repository.GetRequestById(requestId);
+            if (request is null)
+                return 0;
 
+            if (applicantId > 0 && accept==0)
+            {
+                request.RequestStatus = 0;
+                _repository.UpdateCertificateWithdrawApprovalHistory(request);
+                _repository.SaveChanges();
+                return 1;
+            }
+            else if (approverId > 0)
+            {
+                if(accept==1)
+                {
+                    request.DepartmentalApprove = $"Approved ({DateTime.Now})";
+                    _repository.UpdateCertificateWithdrawApprovalHistory(request);
+                    _repository.SaveChanges();
+                    return 1;
+                }
+                else
+                {
+                    request.RequestStatus = 0;
+                    request.DepartmentalApprove= $"Rejected ({DateTime.Now})";
+                    _repository.UpdateCertificateWithdrawApprovalHistory(request);
+                    _repository.SaveChanges();
+                    return 1;
+                }
+
+            }
+            else
+            {
+                if (accept == 1)
+                {
+                    request.SyndicateApprove = $"Approved ({DateTime.Now})";
+                    _repository.UpdateCertificateWithdrawApprovalHistory(request);
+                    _repository.SaveChanges();
+                    return 1;
+                }
+                else
+                {
+                    request.RequestStatus = 0;
+                    request.SyndicateApprove = $"Rejected ({DateTime.Now})";
+                    _repository.UpdateCertificateWithdrawApprovalHistory(request);
+                    _repository.SaveChanges();
+                    return 1;
+                }
+            }
+        }
+
+        public void ReceiveCertificate(int requestId)
+        {
+            var request=_repository.GetRequestById(requestId);
+            if (request is null)
+                return;
+            
+            request.RecievedDate = DateTime.Now;
+            request.RequestStatus = 0;
+            _repository.UpdateCertificateWithdrawApprovalHistory(request);
+            _repository.SaveChanges();
+        }
     }
 }

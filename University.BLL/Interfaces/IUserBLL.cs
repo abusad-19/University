@@ -17,5 +17,7 @@ namespace University.BLL.Interfaces
         (List<Permission>, List<Role>) GetPermissionsAndRolesOfSingleUser(int userId);
         void CreateCertificateWithdrawRequest(int applicantId, string type);//here applicantId=studentId,teacherId,employeeId and type=student,teacher,employee
         List<CertificateWithdrawApprovalHistory> GetRequest(int applicantId, string? deptName);
+        int ApproveOrRejectRequest(int requestId, int approverId, int applicantId, int accept);
+        void ReceiveCertificate(int requestId);
     }
 }

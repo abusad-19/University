@@ -180,5 +180,37 @@ namespace University.MVC.Controllers
 
             return View(Model);
         }
+
+        public IActionResult ApproveOrRejectRequest(int requestId, int approverId, int applicantId, int accept)
+        {
+            if(requestId <= 0 || accept < 0 || accept > 1)
+                return NotFound();
+
+            var operation=_userBll.ApproveOrRejectRequest(requestId,approverId, applicantId, accept);
+            
+            if (operation == 0)
+                return NotFound();
+            else if(applicantId> 0)
+            {
+                return RedirectToAction(nameof(ShowRequest), new {applicantId= applicantId});
+            }
+            else if(approverId>0)
+            {
+                return RedirectToAction(nameof(ShowRequest), new { deptCode = approverId });
+            }
+            else
+            {
+                return RedirectToAction(nameof(ShowRequest));
+            }
+        }
+
+        public IActionResult ReceiveCertificate(int requestId, int applicantId)//here applicantId=studentId,teacherId,employeeId and type=student,teacher,employee
+        {
+            if (requestId <= 0 || applicantId<=0)
+                return NotFound();
+
+            _userBll.ReceiveCertificate(requestId);
+            return RedirectToAction(nameof(ShowRequest), new { applicantId = applicantId });
+        }
     }
 }
