@@ -23,5 +23,6 @@ namespace University.DAL.Models
         public DbSet<RolePermissions> RolePermissionsTable { get; set; }
         public DbSet<UserRole> UserRoleTable { get; set; }
         public DbSet<Employee> EmployeeTable { get; set; }
+        public DbSet<CertificateWithdrawApprovalHistory> CertificateWithdrawApprovalHistoryTable { get; set; }
     }
 }

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using University.BLL.Interfaces;
 using University.DAL.Models;
+using University.MVC.View_Models;
 
 namespace University.MVC.Controllers
 {
@@ -137,6 +139,46 @@ namespace University.MVC.Controllers
             return View();
         }
 
+        //[Authorize(Policy = "CanReadStudentProfile")]
+        //this method canbe used by student,teacher & employee
+        public IActionResult CreateCertificateWithdrawRequest(int applicantId, string type)//here applicantId=studentId,teacherId,employeeId and type=student,teacher,employee
+        {
+            if(applicantId <= 0)
+                return NotFound();
+          
+            _userBll.CreateCertificateWithdrawRequest(applicantId, type);
+            return RedirectToAction(nameof(ShowRequest), new { applicantId = applicantId });
+        }
 
+        public IActionResult ShowRequest(int applicantId,int deptCode)
+        {
+            var dept = _userBll.GetDepartmentByDeptCode(deptCode);
+            List<CertificateWithdrawApprovalHistory> requestList;
+            var Model = new ShowRequest_ViewModel();
+
+            if (applicantId>0)
+            {
+                requestList = _userBll.GetRequest(applicantId, null);
+                Model.RequestList = requestList;
+                Model.ApplicantId = applicantId;
+                Model.deptCode = 0;
+            }  
+            else if(dept!=null)
+            {
+                requestList = _userBll.GetRequest(0, dept.DepartmentName);
+                Model.RequestList = requestList;
+                Model.ApplicantId = 0;
+                Model.deptCode = deptCode;
+            }
+            else
+            {
+                requestList = _userBll.GetRequest(0,null);
+                Model.RequestList = requestList;
+                Model.ApplicantId = 0;
+                Model.deptCode = 0;
+            }
+
+            return View(Model);
+        }
     }
 }

@@ -35,6 +35,11 @@ namespace University.DAL.Repositories
             return _context.UserTable.Find(id);
         }
 
+        public Department? GetDepartmentByDeptCode(int code)
+        {
+            return _context.DepartmentTable.FirstOrDefault(d=>d.DepartmentCode == code);
+        }
+
         public void DeleteUser(User user)
         {
             _context.UserTable.Remove(user);
@@ -84,5 +89,45 @@ namespace University.DAL.Repositories
         {
             return _context.PermissionTable.FirstOrDefault(p => p.Id == permissionId);
         }
+
+        public Student? GetStudentByStudentId(int studentId)
+        {
+            return _context.StudentTable.FirstOrDefault(s=>s.StudentId==studentId);
+        }
+
+        public Teacher? GetTeacherByTeacherId(int teacherId)
+        {
+            return _context.TeacherTable.FirstOrDefault(t=>t.TeacherId==teacherId);
+        }
+
+        public Employee? GetEmployeeByEmployeeId(int employeeId)
+        {
+            return _context.EmployeeTable.FirstOrDefault(e=>e.EmployeeId==employeeId);
+        }
+
+        public void AddCertificateWithdrawApprovalHistory(CertificateWithdrawApprovalHistory histry)
+        {
+            _context.CertificateWithdrawApprovalHistoryTable.Add(histry);
+        }
+
+        public List<CertificateWithdrawApprovalHistory> GetRequestByApplicant(int applicantId)
+        {
+            return _context.CertificateWithdrawApprovalHistoryTable.
+                Where(c=>c.ApplicantId==applicantId && c.RecievedDate==null).ToList();
+        }
+
+        public List<CertificateWithdrawApprovalHistory> GetRequestByDepartment(string deptName)
+        {
+            return _context.CertificateWithdrawApprovalHistoryTable.Where(c=>
+                c.Department==deptName && c.RequestStatus==1 && c.DepartmentalApprove==null).ToList();
+        }
+
+        public List<CertificateWithdrawApprovalHistory> GetRequest()
+        {
+            return _context.CertificateWithdrawApprovalHistoryTable.Where(c=>
+            c.SyndicateApprove==null && c.RequestStatus==1).ToList();
+        }
+
+
     }
 }

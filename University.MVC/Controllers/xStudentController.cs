@@ -108,5 +108,17 @@ namespace University.MVC.Controllers
             var books = _xStudentBll.GetIssuedBooks(id);
             return View(books);
         }
+
+        //[Authorize(Policy = "CanReadStudentProfile")]
+        //public IActionResult CertificateWithdraw(int id)
+        //{
+        //    if(id<=0)
+        //        return NotFound();
+
+        //    var student=_xStudentBll.GetStudentByStudentId(id);
+        //    if(student is null)
+        //        return NotFound();
+
+        //}
     }
 }

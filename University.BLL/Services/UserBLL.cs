@@ -1,4 +1,6 @@
-﻿using University.BLL.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
+using University.BLL.Interfaces;
 using University.DAL.Models;
 using University.DAL.Repositories;
 
@@ -30,6 +32,11 @@ namespace University.BLL.Services
         public User? GetUserById(int id)
         {
             return _repository.GetUserById(id);
+        }
+
+        public Department? GetDepartmentByDeptCode(int code)
+        {
+            return _repository.GetDepartmentByDeptCode(code);
         }
 
         public void DeleteUser(User user)
@@ -136,5 +143,63 @@ namespace University.BLL.Services
 
             return (userPermissions, roles);
         }
+
+        private void CreateRequest(int applicantId, string type, string department)
+        {
+            var request = new CertificateWithdrawApprovalHistory();
+            request.ApplicantId = applicantId;
+            request.ApplicantType = type;
+            request.Department = department;
+            request.RequestCreated=DateTime.Now;
+            request.RequestStatus = 1;
+            _repository.AddCertificateWithdrawApprovalHistory(request);
+            _repository.SaveChanges();
+        }
+
+        public void CreateCertificateWithdrawRequest(int applicantId, string type)//here applicantId=studentId,teacherId,employeeId and type=student,teacher,employee
+        {
+            if(type=="Student")
+            {
+                var temp = _repository.GetStudentByStudentId(applicantId);
+                if(temp is not null)
+                {
+                    CreateRequest(temp.StudentId, type,temp.Department!);
+                }
+            }
+            else if(type=="Teacher")
+            {
+                var temp=_repository.GetTeacherByTeacherId(applicantId);
+                if(temp is not null)
+                {
+                    CreateRequest(temp.TeacherId, type,temp.Department!);
+                }
+            }
+            else if( type == "Department_Employee")
+            {
+                var temp=_repository.GetEmployeeByEmployeeId(applicantId);
+                if(temp is not null)
+                {
+                    CreateRequest(temp.EmployeeId, type, temp.DutyPlace!);
+                }
+            }
+        }
+
+        public List<CertificateWithdrawApprovalHistory> GetRequest(int applicantId, string? deptName)
+        {
+            if (applicantId > 0)
+            {
+                return _repository.GetRequestByApplicant(applicantId);
+            }
+            else if(deptName!=null)
+            {
+                return _repository.GetRequestByDepartment(deptName);
+            }
+            else
+            {
+                return _repository.GetRequest();
+            }
+        }
+        
+
     }
 }
