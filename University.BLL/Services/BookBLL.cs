@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using University.BLL.Interfaces;
 using University.DAL.Models;
 using University.DAL.Repositories;
 
 namespace University.BLL.Services
 {
-    public class BookBLL
+    public class BookBLL:IBookBLL
     {
         private readonly BookRepository _repository;
         public BookBLL(BookRepository repository)

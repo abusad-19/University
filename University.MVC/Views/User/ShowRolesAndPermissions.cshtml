@@ -1,0 +1,20 @@
+﻿
+<div>
+    <h1>Roles</h1>
+    @foreach (var item in ViewBag.Roles)
+    {
+        <ul>
+            <li>@item.RoleName</li>
+        </ul>
+    }
+</div>
+<br />
+<div>
+    <h1>Permissions</h1>
+    @foreach (var item in ViewBag.Permissions)
+    {
+        <ul>
+            <li>@item.Name</li>
+        </ul>
+    }
+</div>

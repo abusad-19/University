@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using University.DAL.Migrations;
+
 using University.DAL.Models;
 
 namespace University.DAL.Repositories

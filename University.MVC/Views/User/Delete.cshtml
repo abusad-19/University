@@ -1,0 +1,18 @@
+﻿@model University.DAL.Models.User
+@{
+    ViewData["title"] = "Delete User";
+}
+
+<div>
+    <dl>
+        <dt>@Html.DisplayNameFor(model => model.UserCode)</dt>
+        <dd>@Html.DisplayFor(model => model.UserCode)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Password)</dt>
+        <dd>@Html.DisplayFor(model => model.Password)</dd>
+        <dt>@Html.DisplayNameFor(model => model.UserType)</dt>
+        <dd>@Html.DisplayFor(model => model.UserType)</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" />
+    </form>
+</div>

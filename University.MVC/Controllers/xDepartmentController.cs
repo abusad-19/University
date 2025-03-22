@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using University.BLL.Services;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using University.BLL.Interfaces;
 using University.DAL.Models;
 
 namespace University.MVC.Controllers
 {
     public class xDepartmentController : Controller
     {
-        private readonly xDepartmentBLL _xDepartmentBll;
-        public xDepartmentController(xDepartmentBLL bll)
+        private readonly IxDepartmentBLL _xDepartmentBll;
+        public xDepartmentController(IxDepartmentBLL bll)
         {
             _xDepartmentBll = bll;
         }
@@ -56,12 +57,14 @@ namespace University.MVC.Controllers
             return View();
         }
 
+        [Authorize(Policy = "CanAccessDepartmentProfile")]
         public IActionResult ShowStudent(int departmentCode) 
         {
             ViewBag.dept = departmentCode;
             return View();
         }
 
+        [Authorize(Policy = "CanAccessDepartmentProfile")]
         public IActionResult ShowStudentsYearWise(int deptId,string Year)
         {
             if (deptId is 0 || Year is null)
@@ -76,6 +79,7 @@ namespace University.MVC.Controllers
             return View();
         }
 
+        [Authorize(Policy = "CanAccessDepartmentProfile")]
         public IActionResult ResultPerYearForEachStudent(int studentId )
         {
             if(studentId is 0)
@@ -91,6 +95,7 @@ namespace University.MVC.Controllers
             return View();
         }
 
+        [Authorize(Policy = "CanAccessDepartmentProfile")]
         public IActionResult ResultCalculatorForEachCourse(int studentId, string year, bool isWrong)
         {
             var temp= _xDepartmentBll.GetAllCoursesForEachStudent(studentId, year);
@@ -115,6 +120,7 @@ namespace University.MVC.Controllers
             return View();
         }
 
+        [Authorize(Policy = "CanAccessDepartmentProfile")]
         [HttpPost]
         public async Task<IActionResult> ResultCalculatorForEachCourse(StudentResult course)
         {
@@ -125,6 +131,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(ResultCalculatorForEachCourse), new { studentId = course.StudentId,year=course.Year, isWrong = false });
         }
 
+        [Authorize(Policy = "CanAccessDepartmentProfile")]
         public IActionResult GenerateYearFinalResult(int studentId)
         {
             if(studentId <=0)
@@ -146,7 +153,8 @@ namespace University.MVC.Controllers
             ViewBag.studentId = studentId;
             return View();
         }
-            
+
+        [Authorize(Policy = "CanAccessDepartmentProfile")]
         public async Task<IActionResult> UpdateYearResult(int id, string year)//here id is studentId
         {
             if(id<=0)
@@ -164,7 +172,5 @@ namespace University.MVC.Controllers
                     new { studentId = id, year = year, isWrong = false });
             }
         }
-
-
     }
 }

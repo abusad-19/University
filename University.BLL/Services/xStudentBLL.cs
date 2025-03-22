@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using University.BLL.Interfaces;
 using University.DAL.Models;
 using University.DAL.Repositories;
 
 namespace University.BLL.Services
 {
-    public class xStudentBLL
+    public class xStudentBLL:IxStudentBLL
     {
         private readonly xStudentRepository _repository;
         public xStudentBLL(xStudentRepository repository)
@@ -92,7 +93,14 @@ namespace University.BLL.Services
             var courses = _repository.GetEnrolledCourses(studentId, year);
             return (yearResult.GPApoint, courses);
         }
-    
-        
+
+        //public void CreateCertificateWithdrawRequest(int studentId)
+        //{
+        //    var request = new CertificateWithdrawApprovalHistory();
+        //    request.StudentId = studentId;
+        //    request.RequestCreated= DateTime.Now;
+        //    _repository.AddCertificateWithdrawRequest(request);
+        //    _repository.SaveChanges();
+        //}
     }
 }

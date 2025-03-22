@@ -1,0 +1,18 @@
+﻿@model University.DAL.Models.Employee
+@{
+    ViewData["title"] = "Delete";
+}
+
+<dl>
+    <dt>@Html.DisplayNameFor(model=>model.EmployeeId)</dt>
+    <dd>@Html.DisplayFor(model=>model.EmployeeId)</dd>
+    <dt>@Html.DisplayNameFor(model => model.EmployeeName)</dt>
+    <dd>@Html.DisplayFor(model => model.EmployeeName)</dd>
+    <dt>@Html.DisplayNameFor(model => model.DutyPlace)</dt>
+    <dd>@Html.DisplayFor(model => model.DutyPlace)</dd>
+
+    <form asp-action="ConfirmDelete">
+        <input type="hidden" asp-for="Id" value=@Model.Id />
+        <input type="submit" value="Confirm" />
+    </form>
+</dl>

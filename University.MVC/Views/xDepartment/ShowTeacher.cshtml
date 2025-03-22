@@ -3,27 +3,33 @@
     ViewData["title"] = $"Teachers of {@ViewBag.xdepartment}";
 }
 
-<h2>We have @{@ViewBag.teachers.Count} teachers in @{@ViewBag.xdepartment} department</h2>
 
-<table class="teachers table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.TeacherId)</th>
-            <th>@Html.DisplayNameFor(model => model.TeacherName)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in ViewBag.teachers)
-        {
+@if (@ViewBag.teachers.Count is 0)
+{
+    <h3>There is no any teacher...</h3>
+}
+else
+{
+    <h2>We have @ViewBag.teachers.Count teachers in @ViewBag.xdepartment department</h2>
+    <br />
+    <table class="teachers table">
+        <thead>
             <tr>
-                <td>@item.TeacherId</td>
-                <td>@item.TeacherName</td>
-                <td>
-                    <button>Profile</button>
-                </td>
+                <th>@Html.DisplayNameFor(model => model.TeacherId)</th>
+                <th>@Html.DisplayNameFor(model => model.TeacherName)</th>
             </tr>
-        }
-    </tbody>
-</table>
-
-<a asp-controller="Teacher" asp-action="Create" class="btn btn-info">Add Teacher</a>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.teachers)
+            {
+                <tr>
+                    <td>@item.TeacherId</td>
+                    <td>@item.TeacherName</td>
+                    <td>
+                        <button>Profile</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

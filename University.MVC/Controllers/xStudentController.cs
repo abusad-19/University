@@ -1,20 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using University.BLL.Services;
-using University.DAL.Models;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using University.BLL.Interfaces;
 
 namespace University.MVC.Controllers
 {
     public class xStudentController : Controller
     {
-        private readonly appDBcontext _context;
-        private readonly xStudentBLL _xStudentBll;
-        public xStudentController(appDBcontext context, xStudentBLL bll)
+        private readonly IxStudentBLL _xStudentBll;
+        public xStudentController(IxStudentBLL bll)
         {
-            _context = context;
             _xStudentBll = bll;
         }
 
+        [Authorize(Policy= "CanReadStudentProfile")]
         public IActionResult Index(int id)//here id is studentId
         {
             var student=_xStudentBll.GetStudentByStudentId(id);
@@ -24,6 +22,8 @@ namespace University.MVC.Controllers
             ViewBag.stdId = id;
             return View();
         }
+
+        [Authorize(Policy = "CanReadStudentProfile")]
         public IActionResult CourseCanBeEnroll(int id)
         {
             if(id<=0) 
@@ -40,6 +40,7 @@ namespace University.MVC.Controllers
             return View();
         }
 
+        [Authorize(Policy = "CanReadStudentProfile")]
         public IActionResult EnrollCourse(int pupilId, int courseId) 
         {
             if(pupilId<=0 || courseId<=0)
@@ -52,6 +53,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(CourseCanBeEnroll),new {id=pupilId});
         }
 
+        [Authorize(Policy = "CanReadStudentProfile")]
         public IActionResult MyEnrolledCourses(int id)//here id is studentId
         {
             if(id<=0)
@@ -61,6 +63,7 @@ namespace University.MVC.Controllers
             return View();
         }
 
+        [Authorize(Policy = "CanReadStudentProfile")]
         public IActionResult ShowResultYearWise(int id)//here id is studentId
         {
             if(id<=0)
@@ -77,6 +80,7 @@ namespace University.MVC.Controllers
 
         }
 
+        [Authorize(Policy = "CanReadStudentProfile")]
         public IActionResult YearFinalResult(int id, string YearName)//here id is studentId
         {
             if (id<=0)
@@ -96,14 +100,25 @@ namespace University.MVC.Controllers
             return View(courses);
         }
 
+        [Authorize(Policy = "CanReadStudentProfile")]
         public IActionResult LibraryIssuedBooks(int id)//here id is studentId
         {
-            if(id<=0)
+            if (id <= 0)
                 return NotFound();
-            var books=_xStudentBll.GetIssuedBooks(id);
+            var books = _xStudentBll.GetIssuedBooks(id);
             return View(books);
         }
-    
-        
+
+        //[Authorize(Policy = "CanReadStudentProfile")]
+        //public IActionResult CertificateWithdraw(int id)
+        //{
+        //    if(id<=0)
+        //        return NotFound();
+
+        //    var student=_xStudentBll.GetStudentByStudentId(id);
+        //    if(student is null)
+        //        return NotFound();
+
+        //}
     }
 }

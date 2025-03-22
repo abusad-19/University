@@ -1,0 +1,45 @@
+﻿@using University.MVC.View_Models
+@model EmployeeList_ViewModel
+@using System.Security.Claims
+@{
+    ViewData["title"] = "Employees";
+}
+
+@if(Model.Employees.Count() is 0)
+{
+    <h3>There is no employee</h3>
+}
+else
+{
+    <table class="employee table">
+        <thead>
+            <tr>
+                <th>EmployeeID</th>
+                <th>EmployeeName</th>
+                <th>DutyPlace</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.Employees)
+            {
+                <tr>
+                    <td>@item.EmployeeId</td>
+                    <td>@item.EmployeeName</td>
+                    <td>@item.DutyPlace</td>
+                    @if (User.HasClaim("Permission", "employee_CRUD_operation"))
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id=@item.Id class="btn btn-primary">Edit</a>
+                            <a asp-action="Delete" asp-route-id=@item.Id class="btn btn-primary">Delete</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    @if (User.HasClaim("Permission", "employee_CRUD_operation"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Add Employee</a>
+    }
+}

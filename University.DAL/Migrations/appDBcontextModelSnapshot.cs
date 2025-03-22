@@ -69,6 +69,43 @@ namespace University.DAL.Migrations
                     b.ToTable("CartTable");
                 });
 
+            modelBuilder.Entity("University.DAL.Models.CertificateWithdrawApprovalHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ApplicantId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicantType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DepartmentalApprove")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RecievedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("RequestCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RequestStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SyndicateApprove")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CertificateWithdrawApprovalHistoryTable");
+                });
+
             modelBuilder.Entity("University.DAL.Models.Course", b =>
                 {
                     b.Property<int>("Id")
@@ -123,6 +160,28 @@ namespace University.DAL.Migrations
                     b.ToTable("DepartmentTable");
                 });
 
+            modelBuilder.Entity("University.DAL.Models.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DutyPlace")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmployeeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmployeeTable");
+                });
+
             modelBuilder.Entity("University.DAL.Models.LendBook", b =>
                 {
                     b.Property<int>("Id")
@@ -155,6 +214,57 @@ namespace University.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LendBookTable");
+                });
+
+            modelBuilder.Entity("University.DAL.Models.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PermissionTable");
+                });
+
+            modelBuilder.Entity("University.DAL.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RoleTable");
+                });
+
+            modelBuilder.Entity("University.DAL.Models.RolePermissions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("PermissionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RolePermissionsTable");
                 });
 
             modelBuilder.Entity("University.DAL.Models.Student", b =>
@@ -268,6 +378,47 @@ namespace University.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TeacherTable");
+                });
+
+            modelBuilder.Entity("University.DAL.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserTable");
+                });
+
+            modelBuilder.Entity("University.DAL.Models.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserRoleTable");
                 });
 #pragma warning restore 612, 618
         }

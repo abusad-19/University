@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using University.DAL.Models;
-using University.BLL.Services;
+using University.BLL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace University.MVC.Controllers
 {
+    [Authorize(Policy = "CanCourse_CRUD_operation")]
     public class CourseController : Controller
     {
-        private readonly CourseBLL _courseBLL;
-        public CourseController(CourseBLL courseBLL)
+        private readonly ICourseBLL _courseBLL;
+        public CourseController(ICourseBLL courseBLL)
         {
             _courseBLL = courseBLL;
         }

@@ -1,0 +1,85 @@
+﻿@using University.MVC.View_Models
+@model ShowRequest_ViewModel
+@{
+    ViewData["title"] = "ShowRequest";
+}
+
+@if(Model.RequestList.Count is 0)
+{
+    <h3>There isn't any request yet.....</h3>
+}
+else
+{
+    <table class="request table">
+        <thead>
+            <tr>
+                <th>ApplicantId</th>
+                <th>ApplicantType</th>
+                <th>Department</th>
+                <th>RequestCreated</th>
+                <th>DepartmentalApprove</th>
+                <th>SyndicateApprove</th>
+                <th>RecievedDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.RequestList)
+            {
+                <tr>
+                    <td>@item.ApplicantId</td>
+                    <td>@item.ApplicantType</td>
+                    <td>@item.Department</td>
+                    <td>@item.RequestCreated</td>
+                    <td>@item.DepartmentalApprove</td>
+                    <td>@item.SyndicateApprove</td>
+                    <td>@item.RecievedDate</td>
+                    
+                    @if(Model.ApplicantId>0)//cancel by applicant
+                    {
+                        if (item.DepartmentalApprove == null && item.RequestStatus==1)
+                        {
+                            <td>
+                                <a href="@Url.Action("ApproveOrRejectRequest","User",new{requestId=item.Id,applicantId=Model.ApplicantId})" class="btn btn-primary">
+                                    Cancel Request
+                                </a>
+                            </td>
+                        }
+                        if(item.SyndicateApprove!=null && item.RequestStatus==1)
+                        {
+                            <td>
+                                <a href="@Url.Action("ReceiveCertificate","User",new{requestId=item.Id,applicantId=Model.ApplicantId})" class="btn btn-primary">
+                                    Receive
+                                </a>
+                            </td>
+                        }
+                    }
+                    else if(Model.deptCode>0)//this section is for department
+                    {
+                        <td>
+                            <a href="@Url.Action("ApproveOrRejectRequest","User",new{requestId=item.Id,approverId=Model.deptCode,accept=1})" class="btn btn-success">
+                                Approve
+                            </a>
+                            <a href="@Url.Action("ApproveOrRejectRequest","User",new{requestId=item.Id,approverId=Model.deptCode})" class="btn btn-primary">
+                                Reject
+                            </a>
+                        </td>
+                    }
+                    else//this section is for VC
+                    {
+                        @if(item.DepartmentalApprove!=null && item.RequestStatus==1)
+                        {
+                            <td>
+                                <a href="@Url.Action("ApproveOrRejectRequest","User",new{requestId=item.Id,accept=1})" class="btn btn-success">
+                                    Approve
+                                </a>
+                                <a href="@Url.Action("ApproveOrRejectRequest","User",new{requestId=item.Id})" class="btn btn-primary">
+                                    Reject
+                                </a>
+                            </td>
+                        }
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,14 @@
+﻿@model University.DAL.Models.Permission
+@{
+    ViewData["title"] = "Edit";
+}
+
+<form asp-action="Edit">
+    <div>
+        <label asp-for="Name">Permission Name</label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <input type="submit" value="Confirm" />
+    </div>
+</form>

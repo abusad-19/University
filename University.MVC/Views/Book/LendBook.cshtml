@@ -1,11 +1,9 @@
-﻿@model University.DAL.Models.Student
-
-@{
+﻿@{
     ViewData["title"] = "LendBook";
 }
 
-<form asp-action="LendBook">
-    <label asp-for="StudentId">Enter Student ID</label>
-    <input asp-for="StudentId" />
-    <input type="submit" value="Confirm" />
+<form asp-action="StudentDetails">
+    <label>Enter Student ID</label>
+    <input name="studentId" />
+    <input type="submit" value="Enter" />
 </form>

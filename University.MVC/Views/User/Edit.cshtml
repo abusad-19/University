@@ -1,0 +1,29 @@
+﻿@model University.DAL.Models.User
+@{
+    ViewData["title"] = "Edit User";
+}
+
+<form asp-action="Edit">
+    <div>
+        <label asp-for="UserCode">User Code</label>
+        <input asp-for="UserCode" />
+    </div>
+    <div>
+        <label asp-for="Password">Password</label>
+        <input asp-for="Password" />
+    </div>
+    <div>
+        <label asp-for="UserType">UserType</label>
+        <select asp-for="UserType">
+            <option value="">--select--</option>
+            <option value="Student">Student</option>
+            <option value="Admin">Admin</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Librarian">Librarian</option>
+            <option value="Department_Employee">Department_Employee</option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Confirm" />
+    </div>
+</form>

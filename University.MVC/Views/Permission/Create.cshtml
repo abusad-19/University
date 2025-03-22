@@ -1,0 +1,14 @@
+﻿@model University.DAL.Models.Permission
+@{
+    ViewData["title"] = "Create";
+}
+
+<form asp-action="Create">
+    <div>
+        <label asp-for="Name">Permission name</label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>

@@ -1,0 +1,30 @@
+﻿@model University.DAL.Models.Employee
+@{
+    ViewData["title"] = "Edit";
+}
+
+<form asp-action="Update">
+    <div>
+        <label asp-for="EmployeeId">Employee ID</label>
+        <input asp-for="EmployeeId" />
+    </div>
+    <div>
+        <label asp-for="EmployeeName">Employee Name</label>
+        <input asp-for="EmployeeName" />
+    </div>
+    <div>
+        <label asp-for="DutyPlace">DutyPlace</label>
+        <select asp-for="DutyPlace">
+            <option value="">-select-</option>
+            <option value="Librarian">Librarian</option>
+            @foreach (var item in ViewBag.names)
+            {
+                <option value="@item">@item</option>
+            }
+        </select>
+    </div>
+
+    <input type="hidden" asp-for="Id" value=@Model.Id/>
+    <input type="submit" value="Submit" />
+</form>
+

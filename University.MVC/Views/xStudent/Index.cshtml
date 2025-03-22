@@ -21,3 +21,13 @@
         My Library Status
     </a>
 </div>
+<div>
+    <a href="@Url.Action("CreateCertificateWithdrawRequest","User",new{applicantId=ViewBag.stdId,type="Student"})" class="btn btn-info">
+        CreateRequest
+    </a>
+</div>
+<div>
+    <a href="@Url.Action("ShowRequest","User",new{applicantId=ViewBag.stdId})" class="btn btn-success">
+        ShowRequest
+    </a>
+</div>

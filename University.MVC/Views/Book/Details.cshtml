@@ -1,4 +1,5 @@
-﻿@model University.DAL.Models.Book
+﻿@using System.Security.Claims
+@model University.DAL.Models.Book
 @{
     ViewData["title"] = "Details";
 }
@@ -22,10 +23,13 @@
     {
         <h2>@{@ViewBag.quentity} piece Available..</h2>
 
-        <form asp-action="AddToCart" asp-route-id=@ViewBag.id>
+        if (User.HasClaim("Permission", "LibraryManagement"))
+        {
+            <form asp-action="AddToCart" asp-route-id=@ViewBag.id>
 
-            <input type="submit" value="Add To Cart" class="btn btn-primary" />
-        </form>
+                <input type="submit" value="Add To Cart" class="btn btn-primary" />
+            </form>
+        }
     }
     
 </dl>

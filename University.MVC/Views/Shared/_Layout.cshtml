@@ -24,28 +24,100 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index">Student</a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Index">Teacher</a>
-                        </li>
+                        </li>                    
                         <li>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Department" asp-action="Index">Department</a>
                         </li>
                         <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">Course</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Library</a>
                         </li>
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Book</a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Cart">Cart</a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="GotoReturnPage">ReturnBook</a>
-                        </li>
+
+                        @using System.Security.Claims
+
+                        @if (User.HasClaim("Permission", "Read_StudentProfile"))
+                        {
+                            <li>
+                                <a asp-action="Index" asp-controller="xStudent" asp-route-id=@User.FindFirst("UserCode")?.Value class="nav-link text-dark">StudentDashboard</a>
+                                <br />
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "Read_DepartmentProfile"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index","xDepartment",new{departmentCode=@User.FindFirst("DepartmentCode")?.Value})" class="nav-link text-dark">
+                                    DepartmentDashboard
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "user_CRUD_operation"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "ManagePermission&Role"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Permission" asp-action="Index">Permissions</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "teacher_CRUD_operation"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Index">Teacher</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "student_CRUD_operation"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index">Student</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "course_CRUD_operation"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">Course</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "employee_CRUD_operation"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim("Permission", "LibraryManagement"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Cart">Cart</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="GotoReturnPage">ReturnBook</a>
+                            </li>
+                        }
+
+                        @if (User.Identity!.IsAuthenticated)
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="LogIn" asp-action="LogOut">LogOut</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="LogIn" asp-action="Index">LogIn</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

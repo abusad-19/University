@@ -1,0 +1,27 @@
+﻿@model University.DAL.Models.Student
+@{
+    ViewData["title"] = "StudentDetails";
+}
+
+<h3>Is it you?</h3>
+<br />
+<dl>
+    <dt>@Html.DisplayNameFor(model=>model.StudentId)</dt>
+    <dd>@Html.DisplayFor(model=>model.StudentId)</dd>
+    <dt>@Html.DisplayNameFor(model => model.StudentName)</dt>
+    <dd>@Html.DisplayFor(model => model.StudentName)</dd>
+    <dt>@Html.DisplayNameFor(model => model.Department)</dt>
+    <dd>@Html.DisplayFor(model => model.Department)</dd>
+    <dt>@Html.DisplayNameFor(model => model.Session)</dt>
+    <dd>@Html.DisplayFor(model => model.Session)</dd>
+    <dt>@Html.DisplayNameFor(model => model.Year)</dt>
+    <dd>@Html.DisplayFor(model => model.Year)</dd>
+    
+    <br />
+    <div>
+        <form asp-action="LendBook">
+            <input type="hidden" name="studentId" value=@Model.StudentId />
+            <input type="submit" value="Confirm" />
+        </form>
+    </div>
+</dl>

@@ -1,0 +1,29 @@
+﻿@model University.DAL.Models.User
+@{
+    ViewData["title"] = "LogIn";
+}
+
+@if (ViewBag.ErrorMessage is not null)
+{
+    <h3>@{@ViewBag.ErrorMessage}</h3>
+}
+
+<form asp-action="LogIn">
+    <div>
+        <label asp-for="UserCode">UserCode</label>
+        <input asp-for="UserCode" />
+    </div>
+    <div>
+        <label asp-for="Password">Password</label>
+        <input asp-for="Password" />
+    </div>
+    <div>
+        <input type="submit" value="LogIn" />
+    </div>
+</form>
+@* <br />
+<a asp-action="Create" asp-controller="User" class="btn btn-info">
+    Create a New Account
+</a> *@
+
+

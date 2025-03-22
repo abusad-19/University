@@ -1,35 +1,54 @@
 ﻿@model IEnumerable<University.DAL.Models.Department>
+@using System.Security.Claims
 @{
     ViewData["title"] = "All Department of University";
 }
 
-<h1>There are @Model.Count() department in the below....</h1>
+@if(Model.Count() is 0)
+{
+    <h3>There has not any department yet...</h3>
+}
+else
+{
+    <h3>There are @Model.Count() department in the below....</h3>
+    <br />
 
-<table class="department table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model=>model.DepartmentCode)</th>
-            <th>@Html.DisplayNameFor(model=>model.DepartmentName)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var item in Model)
-        {
+    <table class="department table">
+        <thead>
             <tr>
-                <td>@Html.DisplayFor(modelItem=>item.DepartmentCode)</td>
-                <td>
-                    <a href="@Url.Action("Index", "xDepartment", new { departmentCode =item.DepartmentCode })" class="btn btn-info">
-                        @item.DepartmentName
-                    <a/>
-                </td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info">Delete</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Edit</a>
-                </td>
+                <th>@Html.DisplayNameFor(model => model.DepartmentCode)</th>
+                <th>@Html.DisplayNameFor(model => model.DepartmentName)</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.DepartmentCode)</td>
+                    <td>
+                        <a href="@Url.Action("Index", "xDepartment", new { departmentCode =item.DepartmentCode })" class="btn btn-info">
+                            @item.DepartmentName
+                            <a />
+                    </td>
+                    <td>
+                        @if (User.HasClaim("Permission", "department_CRUD_operation"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Edit</a>
+                        }
 
-<h2>To add a new department click on the link in the below...</h2>
-<a asp-action="Create" class="btn btn-info">Add New Department</a>
+                        @if (User.HasClaim("Permission", "department_CRUD_operation"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info">Delete</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (User.HasClaim("Permission", "department_CRUD_operation"))
+    {
+        <a asp-action="Create" class="btn btn-info">Add New Department</a>
+    }
+
+}

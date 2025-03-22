@@ -1,18 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using University.BLL.Services;
+using University.BLL.Interfaces;
 using University.DAL.Models;
 
 namespace University.MVC.Controllers
 {
     public class BookController : Controller
     {
-        private readonly  BookBLL _bookBLL;
-        public BookController(BookBLL bookBLL)
+        private readonly  IBookBLL _bookBLL;
+        private readonly IUserBLL _userBLL;
+        public BookController(IBookBLL bookBLL,
+            IUserBLL userBLL)
         {
             _bookBLL = bookBLL;
+            _userBLL = userBLL;
         }
-        public IActionResult Index(string searchString)
+
+        public IActionResult Index(string searchString)//here id is userId
         {
             var books = _bookBLL.GetAllBook();
             if(!searchString.IsNullOrEmpty())
@@ -26,13 +31,15 @@ namespace University.MVC.Controllers
             return View(books);
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         [HttpPost, ActionName("Create")]
-        public async Task<IActionResult> Post(Book book)
+        public async Task<IActionResult> Create(Book book)
         {
             if(book is null)
                 return NotFound();
@@ -41,6 +48,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         public IActionResult Edit(int id)
         {
             if (id <=0)
@@ -49,6 +57,7 @@ namespace University.MVC.Controllers
             return View(_bookBLL.GetBookById(id));
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         [HttpPost,ActionName("Edit")]
         public async Task<IActionResult> Update(Book book)
         {
@@ -59,6 +68,7 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         public IActionResult Delete(int id)
         {
             if(id<=0)
@@ -68,6 +78,7 @@ namespace University.MVC.Controllers
             return View(target);
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         [HttpPost,ActionName("Delete")]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
@@ -94,10 +105,11 @@ namespace University.MVC.Controllers
                 ViewBag.quentity = available.Count();
                 ViewBag.id=available.First().Id;
             }
-            //ViewBag.Available=available
+        
             return View(target);
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         public IActionResult AddToCart(int id)
         {
             if(id<=0)
@@ -107,12 +119,14 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Cart));
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         public IActionResult Cart()
         {
             var addedToCart= _bookBLL.GetCart();
             return View(addedToCart);
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         public IActionResult RemoveFromCart(int id)//here id is BookId, not Cart Id
         {
             if(id<=0)
@@ -125,11 +139,22 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(Cart));
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         public IActionResult LendBook()
         {
             return View();
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
+        public IActionResult StudentDetails(int studentId)
+        {
+            if (studentId <= 0)
+                return NotFound();
+            var student=_bookBLL.GetStudentById(studentId);
+            return View(student);
+        }
+
+        [Authorize(Policy = "CanLibraryManage")]
         [HttpPost]
         public IActionResult LendBook(int studentId)//here id is studentId
         {
@@ -145,11 +170,13 @@ namespace University.MVC.Controllers
             return RedirectToAction(nameof(ReturnBook), new {studentId=studentId});
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         public IActionResult GotoReturnPage()
         {
             return View();
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         public IActionResult ReturnBook(int studentId)
         {
             if(studentId<=0)
@@ -159,6 +186,7 @@ namespace University.MVC.Controllers
             return View(books);
         }
 
+        [Authorize(Policy = "CanLibraryManage")]
         public IActionResult ConfirmReturnBook(int id)// here id is LendBookId
         {
             if(id<=0)

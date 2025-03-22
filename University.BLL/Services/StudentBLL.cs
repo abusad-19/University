@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+﻿using University.BLL.Interfaces;
 using University.DAL.Models;
 using University.DAL.Repositories;
 
 namespace University.BLL.Services
 {
-    public class StudentBLL
+    public class StudentBLL: IStudentBLL
     {
         private readonly StudentRepository _studentRepository;
         public StudentBLL(

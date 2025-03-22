@@ -68,6 +68,9 @@ namespace University.DAL.Repositories
                 return temp[0];
         }
     
-        
+        public void AddCertificateWithdrawRequest(CertificateWithdrawApprovalHistory request)
+        {
+            _context.CertificateWithdrawApprovalHistoryTable.Add(request);
+        }
     }
 }

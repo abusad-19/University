@@ -1,0 +1,39 @@
+﻿@model IEnumerable<University.DAL.Models.Role>
+@{
+    ViewData["tilte"] = "Give Access";
+}
+
+<table class="permit table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model=>model.RoleName)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (@ViewBag.added is not null)
+        {
+            @foreach (var item in @ViewBag.added)
+            {
+                <tr>
+                    <td>@item.RoleName</td>
+                    <td>
+                        <a href="@Url.Action("RemovePermit","User",new{userId=@ViewBag.userId,roleId=item.Id})" class="btn btn-primary">
+                            Remove Role
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.RoleName</td>
+                <td>
+                    <a href="@Url.Action("GivePermit","User",new{userId=@ViewBag.userId,roleId=item.Id})" class="btn btn-primary">
+                        Add Role
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
